@@ -20,6 +20,7 @@ body {
   background: var(--bg);
 }
 
+/* CARD + GLOW */
 .card {
   width: 90%;
   max-width: 380px;
@@ -27,7 +28,17 @@ body {
   background: var(--card);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  position: relative;
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.08),
+    0 0 0px rgba(251,146,60,0.0);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.12),
+    0 0 20px rgba(251,146,60,0.4);
 }
 
 /* HEADER */
@@ -64,13 +75,12 @@ body {
 .fade-out { opacity: 0; }
 .fade-in { opacity: 1; }
 
-/* INPUT GROUP */
+/* INPUT */
 .input-group {
   position: relative;
   margin-bottom: 22px;
 }
 
-/* CLEAN INPUT (NO DOUBLE BORDER) */
 input {
   width: 100%;
   padding: 12px 0;
@@ -78,7 +88,6 @@ input {
   outline: none;
   background: transparent;
   font-size: 15px;
-  color: #111;
 }
 
 /* BASE LINE */
@@ -86,7 +95,6 @@ input {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   height: 2px;
   background: #e5e7eb;
@@ -97,11 +105,10 @@ input {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 0%;
   height: 2px;
   background: var(--line);
-  box-shadow: 0 0 8px rgba(251,146,60,0.7);
+  box-shadow: 0 0 10px rgba(251,146,60,0.7);
   transition: 0.3s;
 }
 
@@ -178,7 +185,7 @@ button {
   <!-- LOGIN -->
   <div class="form" id="loginBox">
     <div class="input-group">
-      <input type="text" id="username" placeholder="myUNMUS ID">
+      <input type="text" placeholder="myUNMUS ID">
     </div>
 
     <div class="input-group password-box">
@@ -190,11 +197,11 @@ button {
       </svg>
     </div>
 
-    <button id="loginBtn" onclick="login()">Lanjutkan</button>
+    <button onclick="step1()">Lanjutkan</button>
 
     <div class="footer">
-      <span id="forgotText" onclick="step1()">Lupa kata sandi?</span>
-      <span onclick="toggleLang()" id="langBtn">ID</span>
+      <span onclick="step1()">Lupa kata sandi?</span>
+      <span id="langBtn" onclick="toggleLang()">ID</span>
     </div>
   </div>
 
@@ -204,11 +211,10 @@ button {
       <input type="text" id="resetId" placeholder="Masukkan ID">
     </div>
 
-    <button id="nextBtn" onclick="step2()">Lanjut</button>
+    <button onclick="step2()">Lanjut</button>
 
     <div class="footer">
-      <span id="back1" onclick="backLogin()">← Kembali</span>
-      <span></span>
+      <span onclick="backLogin()">← Kembali</span>
     </div>
   </div>
 
@@ -223,11 +229,10 @@ button {
       <input type="text" id="kode" placeholder="Kode verifikasi">
     </div>
 
-    <button id="verifyBtn" onclick="step3()">Verifikasi</button>
+    <button onclick="step3()">Verifikasi</button>
 
     <div class="footer">
-      <span id="back2" onclick="step1()">← Kembali</span>
-      <span></span>
+      <span onclick="step1()">← Kembali</span>
     </div>
   </div>
 
@@ -242,83 +247,25 @@ button {
       </svg>
     </div>
 
-    <button id="saveBtn" onclick="finishReset()">Simpan Password</button>
-
-    <div class="footer">
-      <span id="back3" onclick="backLogin()">Kembali ke login</span>
-      <span></span>
-    </div>
+    <button onclick="backLogin()">Simpan Password</button>
   </div>
 
 </div>
 
 <script>
-let lang = "ID";
+let lang="ID";
 
-/* FADE */
 function switchBox(id){
-  const forms = document.querySelectorAll(".form");
-  forms.forEach(f => f.classList.add("fade-out"));
-
-  setTimeout(()=>{
-    forms.forEach(f=>{
-      f.classList.add("hidden");
-      f.classList.remove("fade-out");
-    });
-
-    const active = document.getElementById(id);
-    active.classList.remove("hidden");
-    active.classList.add("fade-in");
-
-    setTimeout(()=>active.classList.remove("fade-in"),300);
-  },200);
+  document.querySelectorAll(".form").forEach(f=>{
+    f.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
 }
 
-/* NAV */
 function step1(){ switchBox("step1Box"); }
 function step2(){ switchBox("step2Box"); }
 function step3(){ switchBox("step3Box"); }
 function backLogin(){ switchBox("loginBox"); }
-
-/* LANGUAGE */
-function toggleLang(){
-  lang = lang === "ID" ? "EN" : "ID";
-  langBtn.innerText = lang;
-
-  if(lang==="EN"){
-    loginBtn.innerText="Continue";
-    forgotText.innerText="Forgot password?";
-    nextBtn.innerText="Next";
-    verifyBtn.innerText="Verify";
-    saveBtn.innerText="Save Password";
-
-    back1.innerText="← Back";
-    back2.innerText="← Back";
-    back3.innerText="Back to login";
-
-    infoText.innerHTML="Enter verification code sent to<br><b>ndramy31@gmail.com</b>";
-
-    resetId.placeholder="Enter ID";
-    kode.placeholder="Verification code";
-    newPass.placeholder="New password";
-  } else {
-    loginBtn.innerText="Lanjutkan";
-    forgotText.innerText="Lupa kata sandi?";
-    nextBtn.innerText="Lanjut";
-    verifyBtn.innerText="Verifikasi";
-    saveBtn.innerText="Simpan Password";
-
-    back1.innerText="← Kembali";
-    back2.innerText="← Kembali";
-    back3.innerText="Kembali ke login";
-
-    infoText.innerHTML="Masukkan kode verifikasi yang telah dikirim ke email<br><b>ndramy31@gmail.com</b>";
-
-    resetId.placeholder="Masukkan ID";
-    kode.placeholder="Kode verifikasi";
-    newPass.placeholder="Password baru";
-  }
-}
 
 /* PASSWORD */
 function togglePassword(){
@@ -331,9 +278,16 @@ function toggleNewPassword(){
   slash2.style.display = newPass.type==="text"?"block":"none";
 }
 
-/* SIMULASI */
-function login(){ alert("Login berhasil"); }
-function finishReset(){ alert("Password berhasil diubah"); backLogin(); }
+/* LANGUAGE */
+function toggleLang(){
+  lang = lang==="ID"?"EN":"ID";
+  langBtn.innerText = lang;
+
+  document.getElementById("infoText").innerHTML =
+    lang==="EN"
+    ? "Enter verification code sent to email<br><b>ndramy31@gmail.com</b>"
+    : "Masukkan kode verifikasi yang telah dikirim ke email<br><b>ndramy31@gmail.com</b>";
+}
 </script>
 
 </body>
