@@ -3,141 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSO UNMUS Style</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f68b1f;
-}
-
-.card {
-  width: 90%;
-  max-width: 380px;
-  margin: 80px auto;
-  background: #eee;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.header {
-  display: flex;
-}
-
-.left-bar {
-  width: 80px;
-  background: #f68b1f;
-  color: white;
-  padding: 15px 10px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.right-header {
-  flex: 1;
-  padding: 20px;
-  color: #f68b1f;
-  font-weight: bold;
-  text-align: right;
-}
-
-.form {
-  padding: 20px;
-}
-
-.input-group {
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-bottom: 2px solid #f68b1f;
-  background: transparent;
-  font-size: 16px;
-  outline: none;
-}
-
-.password-box {
-  position: relative;
-}
-
-.eye {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  stroke: #888;
-  fill: none;
-  stroke-width: 2;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background: #f68b1f;
-  border: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 8px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 15px;
-  color: #f68b1f;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-  <div class="header">
-    <div class="left-bar">UNMUS</div>
-    <div class="right-header">
-      myUNMUS<br>single sign-on
-    </div>
-  </div>
-
-  <div class="form">
-    <div class="input-group">
-      <input type="text" id="username" placeholder="myUNMUS ID">
-    </div>
-
-    <div class="input-group password-box">
-      <input type="password" id="password" placeholder="Password">
-
-      <svg id="eyeIcon" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
-        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
-        <circle cx="12" cy="12" r="3"/>
-        <line id="slash" x1="3" y1="3" x2="21" y2="21" style="display:none"/>
-      </svg>
-
-    </div>
-
-    <button onclick="login()">Lanjutkan</button>
-
-    <div class="footer">
-      <span>Lupa kata sandi?</span>
-      <span>ID</span>
-    </div>
-  </div>
-</div>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSO UNMUS</title>
 
 <style>
@@ -199,22 +64,49 @@ body {
 .fade-out { opacity: 0; }
 .fade-in { opacity: 1; }
 
+/* INPUT GROUP */
 .input-group {
+  position: relative;
   margin-bottom: 22px;
 }
 
+/* CLEAN INPUT (NO DOUBLE BORDER) */
 input {
   width: 100%;
   padding: 12px 0;
   border: none;
-  border-bottom: 2px solid #e5e7eb;
-  font-size: 15px;
   outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #111;
+}
+
+/* BASE LINE */
+.input-group::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+/* ACTIVE LINE + GLOW */
+.input-group::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--line);
+  box-shadow: 0 0 8px rgba(251,146,60,0.7);
   transition: 0.3s;
 }
 
-input:focus {
-  border-bottom: 2px solid var(--line);
+.input-group:focus-within::after {
+  width: 100%;
 }
 
 input::placeholder {
@@ -363,89 +255,84 @@ button {
 <script>
 let lang = "ID";
 
-/* FADE SWITCH */
-function switchBox(showId) {
+/* FADE */
+function switchBox(id){
   const forms = document.querySelectorAll(".form");
   forms.forEach(f => f.classList.add("fade-out"));
 
-  setTimeout(() => {
-    forms.forEach(f => {
+  setTimeout(()=>{
+    forms.forEach(f=>{
       f.classList.add("hidden");
       f.classList.remove("fade-out");
     });
 
-    const active = document.getElementById(showId);
+    const active = document.getElementById(id);
     active.classList.remove("hidden");
     active.classList.add("fade-in");
 
-    setTimeout(() => active.classList.remove("fade-in"), 300);
-  }, 200);
+    setTimeout(()=>active.classList.remove("fade-in"),300);
+  },200);
 }
 
-/* NAVIGATION */
+/* NAV */
 function step1(){ switchBox("step1Box"); }
 function step2(){ switchBox("step2Box"); }
 function step3(){ switchBox("step3Box"); }
 function backLogin(){ switchBox("loginBox"); }
 
 /* LANGUAGE */
-function toggleLang() {
-  lang = (lang === "ID") ? "EN" : "ID";
-  document.getElementById("langBtn").innerText = lang;
+function toggleLang(){
+  lang = lang === "ID" ? "EN" : "ID";
+  langBtn.innerText = lang;
 
-  if (lang === "EN") {
-    loginBtn.innerText = "Continue";
-    forgotText.innerText = "Forgot password?";
-    nextBtn.innerText = "Next";
-    verifyBtn.innerText = "Verify";
-    saveBtn.innerText = "Save Password";
+  if(lang==="EN"){
+    loginBtn.innerText="Continue";
+    forgotText.innerText="Forgot password?";
+    nextBtn.innerText="Next";
+    verifyBtn.innerText="Verify";
+    saveBtn.innerText="Save Password";
 
-    back1.innerText = "← Back";
-    back2.innerText = "← Back";
-    back3.innerText = "Back to login";
+    back1.innerText="← Back";
+    back2.innerText="← Back";
+    back3.innerText="Back to login";
 
-    infoText.innerHTML = "Enter the verification code sent to email<br><b>ndramy31@gmail.com</b>";
+    infoText.innerHTML="Enter verification code sent to<br><b>ndramy31@gmail.com</b>";
 
-    resetId.placeholder = "Enter ID";
-    kode.placeholder = "Verification code";
-    newPass.placeholder = "New password";
-
+    resetId.placeholder="Enter ID";
+    kode.placeholder="Verification code";
+    newPass.placeholder="New password";
   } else {
-    loginBtn.innerText = "Lanjutkan";
-    forgotText.innerText = "Lupa kata sandi?";
-    nextBtn.innerText = "Lanjut";
-    verifyBtn.innerText = "Verifikasi";
-    saveBtn.innerText = "Simpan Password";
+    loginBtn.innerText="Lanjutkan";
+    forgotText.innerText="Lupa kata sandi?";
+    nextBtn.innerText="Lanjut";
+    verifyBtn.innerText="Verifikasi";
+    saveBtn.innerText="Simpan Password";
 
-    back1.innerText = "← Kembali";
-    back2.innerText = "← Kembali";
-    back3.innerText = "Kembali ke login";
+    back1.innerText="← Kembali";
+    back2.innerText="← Kembali";
+    back3.innerText="Kembali ke login";
 
-    infoText.innerHTML = "Masukkan kode verifikasi yang telah dikirim ke email<br><b>ndramy31@gmail.com</b>";
+    infoText.innerHTML="Masukkan kode verifikasi yang telah dikirim ke email<br><b>ndramy31@gmail.com</b>";
 
-    resetId.placeholder = "Masukkan ID";
-    kode.placeholder = "Kode verifikasi";
-    newPass.placeholder = "Password baru";
+    resetId.placeholder="Masukkan ID";
+    kode.placeholder="Kode verifikasi";
+    newPass.placeholder="Password baru";
   }
 }
 
-/* PASSWORD TOGGLE */
+/* PASSWORD */
 function togglePassword(){
-  const i = password;
-  const s = slash;
-  i.type = i.type === "password" ? "text" : "password";
-  s.style.display = i.type === "text" ? "block" : "none";
+  password.type = password.type==="password"?"text":"password";
+  slash.style.display = password.type==="text"?"block":"none";
 }
 
 function toggleNewPassword(){
-  const i = newPass;
-  const s = slash2;
-  i.type = i.type === "password" ? "text" : "password";
-  s.style.display = i.type === "text" ? "block" : "none";
+  newPass.type = newPass.type==="password"?"text":"password";
+  slash2.style.display = newPass.type==="text"?"block":"none";
 }
 
-/* SIMULATION */
-function login(){ alert("Login berhasil (simulasi)"); }
+/* SIMULASI */
+function login(){ alert("Login berhasil"); }
 function finishReset(){ alert("Password berhasil diubah"); backLogin(); }
 </script>
 
