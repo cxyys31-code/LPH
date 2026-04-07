@@ -1,161 +1,167 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myUNMUS SSO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSO UNMUS Style</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5820b;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f68b1f;
+}
 
-    .card {
-      width: 340px;
-      background: #e9e9e9;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+.card {
+  width: 90%;
+  max-width: 380px;
+  margin: 80px auto;
+  background: #eee;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
-    .top {
-      display: flex;
-    }
+.header {
+  display: flex;
+}
 
-    .left {
-      width: 90px;
-      background: #f5820b;
-      color: white;
-      padding: 15px 10px;
-      text-align: center;
-      position: relative;
-    }
+.left-bar {
+  width: 80px;
+  background: #f68b1f;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: bold;
+}
 
-    .left h3 {
-      margin: 0;
-      font-size: 14px;
-    }
+.right-header {
+  flex: 1;
+  padding: 20px;
+  color: #f68b1f;
+  font-weight: bold;
+  text-align: right;
+}
 
-    .circle {
-      width: 60px;
-      height: 60px;
-      background: #e9e9e9;
-      border-radius: 50%;
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.form {
+  padding: 20px;
+}
 
-    .right {
-      flex: 1;
-      padding: 20px;
-      text-align: right;
-    }
+.input-group {
+  margin-bottom: 20px;
+}
 
-    .right h2 {
-      margin: 0;
-      color: #f5820b;
-      font-size: 18px;
-    }
+input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #f68b1f;
+  background: transparent;
+  font-size: 16px;
+  outline: none;
+}
 
-    .right span {
-      font-size: 12px;
-      color: #999;
-    }
+.password-box {
+  position: relative;
+}
 
-    .content {
-      padding: 40px 20px 20px;
-    }
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  stroke: #888;
+  fill: none;
+  stroke-width: 2;
+}
 
-    .input-group {
-      margin-bottom: 20px;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  background: #f68b1f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
-    .input-group input {
-      width: 100%;
-      border: none;
-      border-bottom: 2px solid #ccc;
-      padding: 10px;
-      background: transparent;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .input-group input:focus {
-      border-color: #f5820b;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 12px;
-      background: #f5820b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      font-size: 13px;
-      color: #f5820b;
-    }
-
-    .footer a {
-      text-decoration: none;
-      color: #f5820b;
-    }
-
-    .copyright {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      padding: 10px 0 15px;
-    }
-  </style>
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 15px;
+  color: #f68b1f;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <div class="top">
-      <div class="left">
-        <h3>UNMUS</h3>
-        <div class="circle"></div>
-      </div>
-
-      <div class="right">
-        <h2>myUNMUS</h2>
-        <span>single sign-on</span>
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="input-group">
-        <input type="text" placeholder="myUNMUS ID">
-      </div>
-
-      <button class="btn">Lanjutkan</button>
-
-      <div class="footer">
-        <a href="#">Lupa kata sandi?</a>
-        <a href="#">ID</a>
-      </div>
-    </div>
-
-    <div class="copyright">
-      © 2026 Universitas Musamus Merauke v2.3.7
+<div class="card">
+  <div class="header">
+    <div class="left-bar">UNMUS</div>
+    <div class="right-header">
+      myUNMUS<br>single sign-on
     </div>
   </div>
+
+  <div class="form">
+    <div class="input-group">
+      <input type="text" id="username" placeholder="myUNMUS ID">
+    </div>
+
+    <div class="input-group password-box">
+      <input type="password" id="password" placeholder="Password">
+
+      <svg id="eyeIcon" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+        <circle cx="12" cy="12" r="3"/>
+        <line id="slash" x1="3" y1="3" x2="21" y2="21" style="display:none"/>
+      </svg>
+
+    </div>
+
+    <button onclick="login()">Lanjutkan</button>
+
+    <div class="footer">
+      <span>Lupa kata sandi?</span>
+      <span>ID</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function togglePassword() {
+  const input = document.getElementById("password");
+  const slash = document.getElementById("slash");
+
+  if (input.type === "password") {
+    input.type = "text";
+    slash.style.display = "block";
+  } else {
+    input.type = "password";
+    slash.style.display = "none";
+  }
+}
+
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  const validUser = "310507";
+  const validPass = "2026";
+
+  if (user === validUser && pass === validPass) {
+    window.location.href = "dashboard.html";
+  } else {
+    alert("ID atau Password salah!");
+  }
+}
+</script>
 
 </body>
 </html>
