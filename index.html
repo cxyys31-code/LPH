@@ -111,7 +111,7 @@ button{
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
 
-      <svg id="eye1" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+      <svg id="eye1" class="eye closed" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle class="pupil" cx="12" cy="12" r="3"/>
         <line class="eyelid" x1="3" y1="12" x2="21" y2="12"/>
@@ -128,50 +128,43 @@ button{
     </div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- RESET STEP 1 -->
   <div class="form hidden" id="step1Box">
     <div class="input-group">
       <input type="text" id="resetId" placeholder="Masukkan ID">
     </div>
 
-    <button id="nextBtn" onclick="step2()">Lanjut</button>
+    <button onclick="step2()">Lanjut</button>
 
     <div class="footer">
-      <span id="back1" onclick="backLogin()">← Kembali</span>
+      <span onclick="backLogin()">← Kembali</span>
     </div>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- RESET STEP 2 -->
   <div class="form hidden" id="step2Box">
-    <div class="info" id="infoText">
-      Masukkan kode verifikasi yang dikirim ke email<br>
-      <b>ndramy31@gmail.com</b>
-    </div>
+    <div class="info" id="infoText"></div>
 
     <div class="input-group">
-      <input type="text" id="kode" placeholder="Kode verifikasi">
+      <input type="text" placeholder="Kode verifikasi">
     </div>
 
-    <button id="verifyBtn" onclick="step3()">Verifikasi</button>
-
-    <div class="footer">
-      <span id="back2" onclick="step1()">← Kembali</span>
-    </div>
+    <button onclick="step3()">Verifikasi</button>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- RESET STEP 3 -->
   <div class="form hidden" id="step3Box">
     <div class="input-group">
       <input type="password" id="newPass" placeholder="Password baru">
 
-      <svg id="eye2" class="eye" viewBox="0 0 24 24" onclick="toggleNewPassword()">
+      <svg id="eye2" class="eye closed" viewBox="0 0 24 24" onclick="toggleNewPassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle class="pupil" cx="12" cy="12" r="3"/>
         <line class="eyelid" x1="3" y1="12" x2="21" y2="12"/>
       </svg>
     </div>
 
-    <button id="saveBtn" onclick="backLogin()">Simpan Password</button>
+    <button onclick="backLogin()">Simpan Password</button>
   </div>
 
   <!-- DASHBOARD -->
@@ -184,20 +177,40 @@ button{
 
 <script>
 
-/* NAVIGATION */
+/* DATA USER */
+const users = {
+  "000": {pass:"000", email:"ndramy31@gmail.com"},
+  "123": {pass:"321", email:"indramarianto90@gmail.com"},
+  "999": {pass:"999", email:"zyixki@gmail.com"},
+  "777": {pass:"777", email:"ryantosling@gmail.com"}
+};
+
+/* NAV */
 function show(id){
   document.querySelectorAll(".form").forEach(f=>f.classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
 }
 
 function step1(){show("step1Box")}
-function step2(){show("step2Box")}
+function step2(){
+  const id = resetId.value;
+  if(users[id]){
+    infoText.innerHTML =
+      "Kode dikirim ke email<br><b>"+users[id].email+"</b>";
+    show("step2Box");
+  } else {
+    alert("ID tidak ditemukan");
+  }
+}
 function step3(){show("step3Box")}
 function backLogin(){show("loginBox")}
 
 /* LOGIN */
 function login(){
-  if(username.value==="310507" && password.value==="2026"){
+  const user = username.value;
+  const pass = password.value;
+
+  if(users[user] && users[user].pass===pass){
     errorText.style.display="none";
     show("dashboard");
   } else {
@@ -208,14 +221,14 @@ function login(){
 /* EYE */
 function togglePassword(){
   password.type = password.type==="password"?"text":"password";
-  eye1.classList.toggle("active");
   eye1.classList.toggle("closed");
+  eye1.classList.toggle("active");
 }
 
 function toggleNewPassword(){
   newPass.type = newPass.type==="password"?"text":"password";
-  eye2.classList.toggle("active");
   eye2.classList.toggle("closed");
+  eye2.classList.toggle("active");
 }
 
 /* LANGUAGE */
@@ -224,34 +237,9 @@ function toggleLang(){
   lang = lang==="ID"?"EN":"ID";
   langBtn.innerText = lang;
 
-  if(lang==="EN"){
-    loginBtn.innerText="Continue";
-    forgotText.innerText="Forgot password?";
-    nextBtn.innerText="Next";
-    verifyBtn.innerText="Verify";
-    saveBtn.innerText="Save Password";
-    back1.innerText="← Back";
-    back2.innerText="← Back";
-    welcomeText.innerText="Welcome 👋";
-
-    errorText.innerText="Wrong ID or Password";
-
-    infoText.innerHTML="Enter verification code sent to email<br><b>ndramy31@gmail.com</b>";
-
-  } else {
-    loginBtn.innerText="Lanjutkan";
-    forgotText.innerText="Lupa kata sandi?";
-    nextBtn.innerText="Lanjut";
-    verifyBtn.innerText="Verifikasi";
-    saveBtn.innerText="Simpan Password";
-    back1.innerText="← Kembali";
-    back2.innerText="← Kembali";
-    welcomeText.innerText="Selamat datang 👋";
-
-    errorText.innerText="ID atau Password salah";
-
-    infoText.innerHTML="Masukkan kode verifikasi yang dikirim ke email<br><b></b>";
-  }
+  loginBtn.innerText = lang==="EN"?"Continue":"Lanjutkan";
+  forgotText.innerText = lang==="EN"?"Forgot password?":"Lupa kata sandi?";
+  errorText.innerText = lang==="EN"?"Wrong ID or Password":"ID atau Password salah";
 }
 
 </script>
