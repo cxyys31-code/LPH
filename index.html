@@ -20,7 +20,7 @@ body {
   background: var(--bg);
 }
 
-/* CARD + GLOW */
+/* CARD (GLOW STABIL) */
 .card {
   width: 90%;
   max-width: 380px;
@@ -28,17 +28,10 @@ body {
   background: var(--card);
   border-radius: 20px;
   overflow: hidden;
-  position: relative;
-  box-shadow: 
-    0 10px 25px rgba(0,0,0,0.08),
-    0 0 0px rgba(251,146,60,0.0);
-  transition: 0.3s;
-}
 
-.card:hover {
-  box-shadow: 
-    0 15px 35px rgba(0,0,0,0.12),
-    0 0 20px rgba(251,146,60,0.4);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08),
+    0 0 20px rgba(251,146,60,0.25); /* glow tetap */
 }
 
 /* HEADER */
@@ -68,12 +61,7 @@ body {
 /* FORM */
 .form {
   padding: 22px;
-  opacity: 1;
-  transition: opacity 0.3s ease;
 }
-
-.fade-out { opacity: 0; }
-.fade-in { opacity: 1; }
 
 /* INPUT */
 .input-group {
@@ -133,6 +121,18 @@ input::placeholder {
   fill: none;
   stroke-width: 2;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+/* ACTIVE EYE (TERBUKA) */
+.eye.active {
+  stroke: #f97316;
+  filter: drop-shadow(0 0 4px rgba(249,115,22,0.7));
+}
+
+/* SLASH ANIMATION */
+.eye line {
+  transition: 0.3s;
 }
 
 /* BUTTON */
@@ -160,7 +160,6 @@ button {
   cursor: pointer;
 }
 
-/* INFO */
 .info {
   font-size: 13px;
   color: #6b7280;
@@ -178,7 +177,7 @@ button {
   <div class="header">
     <div class="left-bar">UNMUS</div>
     <div class="right-header">
-      myUNMUS<br><span id="titleText">single sign-on</span>
+      myUNMUS<br>single sign-on
     </div>
   </div>
 
@@ -190,10 +189,11 @@ button {
 
     <div class="input-group password-box">
       <input type="password" id="password" placeholder="Password">
-      <svg class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+
+      <svg id="eye1" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle cx="12" cy="12" r="3"/>
-        <line id="slash" x1="3" y1="3" x2="21" y2="21" style="display:none"/>
+        <line id="slash1" x1="3" y1="3" x2="21" y2="21"/>
       </svg>
     </div>
 
@@ -201,14 +201,14 @@ button {
 
     <div class="footer">
       <span onclick="step1()">Lupa kata sandi?</span>
-      <span id="langBtn" onclick="toggleLang()">ID</span>
+      <span onclick="toggleLang()" id="langBtn">ID</span>
     </div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- STEP RESET -->
   <div class="form hidden" id="step1Box">
     <div class="input-group">
-      <input type="text" id="resetId" placeholder="Masukkan ID">
+      <input type="text" placeholder="Masukkan ID">
     </div>
 
     <button onclick="step2()">Lanjut</button>
@@ -218,7 +218,6 @@ button {
     </div>
   </div>
 
-  <!-- STEP 2 -->
   <div class="form hidden" id="step2Box">
     <div class="info" id="infoText">
       Masukkan kode verifikasi yang telah dikirim ke email<br>
@@ -226,24 +225,20 @@ button {
     </div>
 
     <div class="input-group">
-      <input type="text" id="kode" placeholder="Kode verifikasi">
+      <input type="text" placeholder="Kode verifikasi">
     </div>
 
     <button onclick="step3()">Verifikasi</button>
-
-    <div class="footer">
-      <span onclick="step1()">← Kembali</span>
-    </div>
   </div>
 
-  <!-- STEP 3 -->
   <div class="form hidden" id="step3Box">
     <div class="input-group password-box">
       <input type="password" id="newPass" placeholder="Password baru">
-      <svg class="eye" viewBox="0 0 24 24" onclick="toggleNewPassword()">
+
+      <svg id="eye2" class="eye" viewBox="0 0 24 24" onclick="toggleNewPassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle cx="12" cy="12" r="3"/>
-        <line id="slash2" x1="3" y1="3" x2="21" y2="21" style="display:none"/>
+        <line id="slash2" x1="3" y1="3" x2="21" y2="21"/>
       </svg>
     </div>
 
@@ -253,12 +248,8 @@ button {
 </div>
 
 <script>
-let lang="ID";
-
 function switchBox(id){
-  document.querySelectorAll(".form").forEach(f=>{
-    f.classList.add("hidden");
-  });
+  document.querySelectorAll(".form").forEach(f=>f.classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
 }
 
@@ -267,18 +258,41 @@ function step2(){ switchBox("step2Box"); }
 function step3(){ switchBox("step3Box"); }
 function backLogin(){ switchBox("loginBox"); }
 
-/* PASSWORD */
+/* EYE ANIMATION */
 function togglePassword(){
-  password.type = password.type==="password"?"text":"password";
-  slash.style.display = password.type==="text"?"block":"none";
+  const input = password;
+  const eye = eye1;
+  const slash = slash1;
+
+  if(input.type==="password"){
+    input.type="text";
+    eye.classList.add("active");
+    slash.style.opacity="0";
+  } else {
+    input.type="password";
+    eye.classList.remove("active");
+    slash.style.opacity="1";
+  }
 }
 
 function toggleNewPassword(){
-  newPass.type = newPass.type==="password"?"text":"password";
-  slash2.style.display = newPass.type==="text"?"block":"none";
+  const input = newPass;
+  const eye = eye2;
+  const slash = slash2;
+
+  if(input.type==="password"){
+    input.type="text";
+    eye.classList.add("active");
+    slash.style.opacity="0";
+  } else {
+    input.type="password";
+    eye.classList.remove("active");
+    slash.style.opacity="1";
+  }
 }
 
 /* LANGUAGE */
+let lang="ID";
 function toggleLang(){
   lang = lang==="ID"?"EN":"ID";
   langBtn.innerText = lang;
