@@ -1,1 +1,130 @@
-Hello World
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Simple Keren</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .card {
+      width: 320px;
+      padding: 25px;
+      border-radius: 16px;
+      background: #1e293b;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-weight: 600;
+      color: #38bdf8;
+    }
+
+    .header span {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #fff;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56,189,248,0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="header">
+      <h2>myUNMUS</h2>
+      <span>single sign-on</span>
+    </div>
+
+    <div class="input-group">
+      <input type="text" placeholder="myUNMUS ID">
+    </div>
+
+    <button class="btn">Lanjutkan</button>
+
+    <div class="footer">
+      <a href="#">Lupa kata sandi?</a>
+      <a href="#">ID</a>
+    </div>
+
+    <div class="copyright">
+      © 2026 Universitas Musamus
+    </div>
+  </div>
+
+</body>
+</html>
