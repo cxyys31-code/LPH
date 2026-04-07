@@ -31,7 +31,7 @@ body {
 
   box-shadow:
     0 10px 25px rgba(0,0,0,0.08),
-    0 0 20px rgba(251,146,60,0.2);
+    0 0 20px rgba(251,146,60,0.15);
 }
 
 /* HEADER */
@@ -77,12 +77,22 @@ input {
   font-size: 15px;
 
   border-bottom: 2px solid #e5e7eb;
+
+  appearance: none;
+  -webkit-appearance: none;
+
   transition: 0.25s;
 }
 
+/* FOCUS FIX TANPA BUG */
 input:focus {
   border-bottom: 2px solid var(--line);
-  box-shadow: 0 4px 8px -4px rgba(251,146,60,0.7);
+
+  background: linear-gradient(
+    to top,
+    rgba(251,146,60,0.15),
+    transparent 40%
+  );
 }
 
 input::placeholder {
@@ -109,7 +119,6 @@ input::placeholder {
 
 .eye.active {
   stroke: #f97316;
-  filter: drop-shadow(0 0 4px rgba(249,115,22,0.7));
 }
 
 /* BUTTON */
@@ -182,7 +191,7 @@ button {
     </div>
   </div>
 
-  <!-- RESET -->
+  <!-- STEP 1 -->
   <div class="form hidden" id="step1Box">
     <div class="input-group">
       <input type="text" placeholder="Masukkan ID">
@@ -195,6 +204,7 @@ button {
     </div>
   </div>
 
+  <!-- STEP 2 -->
   <div class="form hidden" id="step2Box">
     <div class="info" id="infoText">
       Masukkan kode verifikasi yang telah dikirim ke email<br>
@@ -208,6 +218,7 @@ button {
     <button onclick="step3()">Verifikasi</button>
   </div>
 
+  <!-- STEP 3 -->
   <div class="form hidden" id="step3Box">
     <div class="input-group password-box">
       <input type="password" id="newPass" placeholder="Password baru">
@@ -277,7 +288,7 @@ function toggleLang(){
   document.getElementById("infoText").innerHTML =
     lang==="EN"
     ? "Enter verification code sent to email<br><b>ndramy31@gmail.com</b>"
-    : "Masukkan kode verifikasi yang telah dikirim ke email<br><b></b>";
+    : "Masukkan kode verifikasi yang telah dikirim ke email<br><b>ndramy31@gmail.com</b>";
 }
 </script>
 
