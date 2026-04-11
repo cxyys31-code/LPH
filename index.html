@@ -6,16 +6,18 @@
 <title>SSO UNMUS</title>
 
 <style>
-:root {
+:root{
   --grad: linear-gradient(135deg,#ef4444,#f97316);
   --bg:#f3f4f6;
   --line:#fb923c;
-  --muted:#9ca3af;
 }
 
-body{margin:0;font-family:Arial;background:var(--bg);}
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+}
 
-/* CARD */
 .card{
   width:90%;
   max-width:380px;
@@ -26,82 +28,84 @@ body{margin:0;font-family:Arial;background:var(--bg);}
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* HEADER */
-.header{display:flex;border-bottom:1px solid #eee;}
+.header{
+  display:flex;
+  border-bottom:1px solid #eee;
+}
+
 .left-bar{
-  width:80px;background:var(--grad);
-  display:flex;align-items:center;justify-content:center;
+  width:80px;
+  background:var(--grad);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
+
 .left-bar img{width:50px;}
+
 .right-header{
-  flex:1;padding:20px;text-align:right;
-  color:#ef4444;font-weight:bold;background:#fff7f5;
+  flex:1;
+  padding:20px;
+  text-align:right;
+  color:#ef4444;
+  font-weight:bold;
+  background:#fff7f5;
 }
 
-/* FORM */
 .form{padding:22px;}
-.hidden{display:none}
 
-/* INPUT */
-.input-group{position:relative;margin-bottom:22px;}
+.input-group{
+  position:relative;
+  margin-bottom:20px;
+}
+
 input{
-  width:100%;padding:12px 0;border:none;outline:none;
-  background:transparent;font-size:15px;
+  width:100%;
+  padding:12px 0;
+  border:none;
+  outline:none;
+  background:transparent;
   border-bottom:2px solid #e5e7eb;
 }
 
-/* ANIMASI GARIS */
 .input-group::after{
-  content:"";position:absolute;bottom:0;left:0;
-  width:0%;height:2px;background:var(--line);
-  transition:0.4s ease;
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--line);
+  transition:0.3s;
 }
-.input-group:focus-within::after{width:100%;}
 
-/* EYE */
+.input-group:focus-within::after{
+  width:100%;
+}
+
 .eye{
-  position:absolute;right:0;top:10px;width:22px;height:22px;
-  stroke:#9ca3af;fill:none;stroke-width:2;
-  cursor:pointer;transition:0.3s;
+  position:absolute;
+  right:0;
+  top:10px;
+  width:22px;
+  cursor:pointer;
 }
-.eye.active{stroke:#f97316;}
-.pupil{transition:0.3s;}
-.eye.closed .pupil{opacity:0;}
-.eyelid{opacity:0;transition:0.3s;}
-.eye.closed .eyelid{opacity:1;}
 
-/* BUTTON */
 button{
-  width:100%;padding:14px;border:none;border-radius:14px;
-  background:var(--grad);color:white;font-size:15px;cursor:pointer;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:var(--grad);
+  color:white;
+  cursor:pointer;
 }
 
-/* FOOTER */
-.footer{
-  display:flex;justify-content:space-between;
-  font-size:13px;margin-top:18px;
-}
-.footer span{color:#ef4444;cursor:pointer;}
-
-/* ERROR (DIPERBAIKI POSISI) */
 .error{
   color:red;
   font-size:12px;
-  margin-top:-5px;
-  margin-bottom:15px;
+  margin-bottom:10px;
   display:none;
-}
-
-/* DASHBOARD */
-.dashboard{
-  padding:25px;
-  text-align:center;
-}
-.card-box{
-  background:#fff7f5;
-  padding:15px;
-  border-radius:12px;
-  margin-top:10px;
 }
 </style>
 </head>
@@ -115,12 +119,11 @@ button{
       <img src="logo.png">
     </div>
     <div class="right-header">
-      myUNMUS<br><span id="titleText">single sign-on</span>
+      myUNMUS<br>single sign-on
     </div>
   </div>
 
-  <!-- LOGIN -->
-  <div class="form" id="loginBox">
+  <div class="form">
 
     <div class="input-group">
       <input type="text" id="username" placeholder="myUNMUS ID">
@@ -129,62 +132,16 @@ button{
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
 
-      <svg id="eye1" class="eye closed" viewBox="0 0 24 24" onclick="togglePassword()">
+      <svg id="eye" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
-        <circle class="pupil" cx="12" cy="12" r="3"/>
-        <line class="eyelid" x1="3" y1="12" x2="21" y2="12"/>
+        <circle cx="12" cy="12" r="3"/>
       </svg>
     </div>
 
     <div id="errorText" class="error">ID atau Password salah</div>
 
-    <button id="loginBtn" onclick="login()">Lanjutkan</button>
+    <button onclick="login()">Lanjutkan</button>
 
-    <div class="footer">
-      <span id="forgotText" onclick="step1()">Lupa kata sandi?</span>
-      <span onclick="toggleLang()" id="langBtn">ID</span>
-    </div>
-  </div>
-
-  <!-- RESET STEP -->
-  <div class="form hidden" id="step1Box">
-    <div class="input-group">
-      <input type="text" id="resetId" placeholder="Masukkan ID">
-    </div>
-    <button id="nextBtn" onclick="step2()">Lanjut</button>
-    <div class="footer">
-      <span id="back1" onclick="backLogin()">← Kembali</span>
-    </div>
-  </div>
-
-  <div class="form hidden" id="step2Box">
-    <div id="infoText"></div>
-    <div class="input-group">
-      <input type="text" placeholder="Kode verifikasi">
-    </div>
-    <button id="verifyBtn" onclick="step3()">Verifikasi</button>
-    <div class="footer">
-      <span id="back2" onclick="step1()">← Kembali</span>
-    </div>
-  </div>
-
-  <div class="form hidden" id="step3Box">
-    <div class="input-group">
-      <input type="password" id="newPass" placeholder="Password baru">
-    </div>
-    <button id="saveBtn" onclick="backLogin()">Simpan Password</button>
-  </div>
-
-  <!-- DASHBOARD PAGE -->
-  <div class="hidden" id="dashboard">
-    <div class="dashboard">
-      <h2 id="welcomeText">Selamat datang 👋</h2>
-      <div class="card-box">
-        <p><b>Portal Mahasiswa</b></p>
-        <p>SSO UNMUS aktif</p>
-      </div>
-      <button onclick="backLogin()">Logout</button>
-    </div>
   </div>
 
 </div>
@@ -193,74 +150,29 @@ button{
 
 /* DATA USER */
 const users={
- "000":{pass:"000",email:"ndramy31@gmail.com"},
- "123":{pass:"321",email:"indramarianto90@gmail.com"},
- "999":{pass:"999",email:"zyixki@gmail.com"},
- "777":{pass:"777",email:"ryantosling@gmail.com"}
+ "000":"000",
+ "123":"321",
+ "999":"999",
+ "777":"777"
 };
-
-/* NAV */
-function show(id){
-  document.querySelectorAll(".form,#dashboard")
-  .forEach(e=>e.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-}
-
-function step1(){show("step1Box")}
-function step2(){
-  const id=resetId.value;
-  if(users[id]){
-    infoText.innerHTML=(lang==="EN"
-      ?"Code sent to email<br><b>"+users[id].email+"</b>"
-      :"Kode dikirim ke email<br><b>"+users[id].email+"</b>");
-    show("step2Box");
-  }
-}
-function step3(){show("step3Box")}
-function backLogin(){show("loginBox")}
 
 /* LOGIN */
 function login(){
   const u=username.value;
   const p=password.value;
 
-  if(users[u] && users[u].pass===p){
-    errorText.style.display="none";
-    show("dashboard");
+  if(users[u] && users[u]===p){
+    window.location.href="dashboard.html"; // 🔥 pindah ke dashboard
   } else {
     errorText.style.display="block";
   }
 }
 
-/* EYE */
+/* SHOW PASSWORD */
 function togglePassword(){
-  password.type=password.type==="password"?"text":"password";
-  eye1.classList.toggle("closed");
-  eye1.classList.toggle("active");
+  password.type = password.type==="password" ? "text" : "password";
 }
 
-/* LANGUAGE */
-let lang="ID";
-function toggleLang(){
-  lang=lang==="ID"?"EN":"ID";
-  langBtn.innerText=lang;
-
-  loginBtn.innerText=lang==="EN"?"Continue":"Lanjutkan";
-  forgotText.innerText=lang==="EN"?"Forgot password?":"Lupa kata sandi?";
-  nextBtn.innerText=lang==="EN"?"Next":"Lanjut";
-  verifyBtn.innerText=lang==="EN"?"Verify":"Verifikasi";
-  saveBtn.innerText=lang==="EN"?"Save Password":"Simpan Password";
-  back1.innerText=lang==="EN"?"← Back":"← Kembali";
-  back2.innerText=lang==="EN"?"← Back":"← Kembali";
-
-  errorText.innerText=lang==="EN"
-    ?"Wrong ID or Password"
-    :"ID atau Password salah";
-
-  welcomeText.innerText=lang==="EN"
-    ?"Welcome 👋"
-    :"Selamat datang 👋";
-}
 </script>
 
 </body>
