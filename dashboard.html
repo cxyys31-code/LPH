@@ -2,11 +2,13 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
+
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
+body{
+  margin:0;
+  font-family:Arial;
   background: repeating-linear-gradient(
     45deg,
     #eee,
@@ -14,46 +16,45 @@ body {
     #ddd 10px,
     #ddd 20px
   );
-  text-align: center;
+  text-align:center;
 }
 
-/* FOTO PROFIL */
-.profile {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #ccc;
-  margin: 40px auto;
-  cursor: pointer;
+/* PROFIL */
+.profile{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#ccc;
+  margin:40px auto;
+  cursor:pointer;
 }
 
 /* GRID */
-.container {
-  display: grid;
-  grid-template-columns: repeat(2, 150px);
-  gap: 30px;
-  justify-content: center;
+.container{
+  display:grid;
+  grid-template-columns:repeat(2,150px);
+  gap:30px;
+  justify-content:center;
 }
 
 /* KOTAK */
-.card {
-  width: 150px;
-  height: 120px;
-  background: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.2s;
+.card{
+  width:150px;
+  height:120px;
+  background:#ccc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.2s;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card:hover{
+  transform:scale(1.05);
 }
 
-/* TEXT */
-.card span {
-  font-size: 12px;
+.card span{
+  font-size:12px;
 }
 </style>
 </head>
