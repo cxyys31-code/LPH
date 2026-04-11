@@ -132,7 +132,7 @@ button{
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
 
-      <svg id="eye" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+      <svg class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle cx="12" cy="12" r="3"/>
       </svg>
@@ -158,19 +158,21 @@ const users={
 
 /* LOGIN */
 function login(){
-  const u=username.value;
-  const p=password.value;
+  const u = document.getElementById("username").value;
+  const p = document.getElementById("password").value;
 
-  if(users[u] && users[u]===p){
-    window.location.href="dashboard.html"; // 🔥 pindah ke dashboard
+  if(users[u] && users[u] === p){
+    localStorage.setItem("login","true"); // 🔥 simpan status login
+    window.location.href = "dashboard.html";
   } else {
-    errorText.style.display="block";
+    document.getElementById("errorText").style.display = "block";
   }
 }
 
 /* SHOW PASSWORD */
 function togglePassword(){
-  password.type = password.type==="password" ? "text" : "password";
+  const pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
 }
 
 </script>
