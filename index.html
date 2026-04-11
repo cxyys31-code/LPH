@@ -10,6 +10,7 @@
   --grad: linear-gradient(135deg,#ef4444,#f97316);
   --bg:#f3f4f6;
   --line:#fb923c;
+  --muted:#9ca3af;
 }
 
 body{margin:0;font-family:Arial;background:var(--bg);}
@@ -38,6 +39,7 @@ body{margin:0;font-family:Arial;background:var(--bg);}
 .form{padding:22px;}
 .hidden{display:none}
 
+/* INPUT */
 .input-group{position:relative;margin-bottom:22px;}
 input{
   width:100%;padding:12px 0;border:none;outline:none;
@@ -45,6 +47,7 @@ input{
   border-bottom:2px solid #e5e7eb;
 }
 
+/* GARIS ANIMASI */
 .input-group::after{
   content:"";position:absolute;bottom:0;left:0;
   width:0%;height:2px;background:var(--line);
@@ -52,12 +55,17 @@ input{
 }
 .input-group:focus-within::after{width:100%;}
 
+/* MATA */
 .eye{
   position:absolute;right:0;top:10px;width:22px;height:22px;
-  stroke:#9ca3af;fill:none;stroke-width:2;
-  cursor:pointer;
+  stroke:var(--muted);fill:none;stroke-width:2;
+  cursor:pointer;transition:0.3s;
 }
 .eye.active{stroke:#f97316;}
+.pupil{transition:0.3s;}
+.eye.closed .pupil{opacity:0;}
+.eyelid{opacity:0;transition:0.3s;}
+.eye.closed .eyelid{opacity:1;}
 
 button{
   width:100%;padding:14px;border:none;border-radius:14px;
@@ -102,9 +110,11 @@ button{
 
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
-      <svg id="eye1" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+
+      <svg id="eye1" class="eye closed" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
-        <circle cx="12" cy="12" r="3"/>
+        <circle class="pupil" cx="12" cy="12" r="3"/>
+        <line class="eyelid" x1="3" y1="12" x2="21" y2="12"/>
       </svg>
     </div>
 
@@ -186,8 +196,11 @@ function login(){
   }
 }
 
+/* FIX MATA */
 function togglePassword(){
   password.type=password.type==="password"?"text":"password";
+  eye1.classList.toggle("closed");
+  eye1.classList.toggle("active");
 }
 
 let lang="ID";
