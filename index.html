@@ -6,17 +6,13 @@
 <title>SSO UNMUS</title>
 
 <style>
-:root{
+:root {
   --grad: linear-gradient(135deg,#ef4444,#f97316);
   --bg:#f3f4f6;
   --line:#fb923c;
 }
 
-body{
-  margin:0;
-  font-family:Arial;
-  background:var(--bg);
-}
+body{margin:0;font-family:Arial;background:var(--bg);}
 
 .card{
   width:90%;
@@ -28,83 +24,50 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-.header{
-  display:flex;
-  border-bottom:1px solid #eee;
-}
-
+.header{display:flex;border-bottom:1px solid #eee;}
 .left-bar{
-  width:80px;
-  background:var(--grad);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:80px;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
 }
-
 .left-bar img{width:50px;}
-
 .right-header{
-  flex:1;
-  padding:20px;
-  text-align:right;
-  color:#ef4444;
-  font-weight:bold;
-  background:#fff7f5;
+  flex:1;padding:20px;text-align:right;
+  color:#ef4444;font-weight:bold;background:#fff7f5;
 }
 
 .form{padding:22px;}
 
-.input-group{
-  position:relative;
-  margin-bottom:20px;
-}
-
+.input-group{position:relative;margin-bottom:22px;}
 input{
-  width:100%;
-  padding:12px 0;
-  border:none;
-  outline:none;
-  background:transparent;
+  width:100%;padding:12px 0;border:none;outline:none;
+  background:transparent;font-size:15px;
   border-bottom:2px solid #e5e7eb;
 }
 
 .input-group::after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:0%;
-  height:2px;
-  background:var(--line);
-  transition:0.3s;
+  content:"";position:absolute;bottom:0;left:0;
+  width:0%;height:2px;background:var(--line);
+  transition:0.4s ease;
 }
-
-.input-group:focus-within::after{
-  width:100%;
-}
+.input-group:focus-within::after{width:100%;}
 
 .eye{
-  position:absolute;
-  right:0;
-  top:10px;
-  width:22px;
+  position:absolute;right:0;top:10px;width:22px;height:22px;
+  stroke:#9ca3af;fill:none;stroke-width:2;
   cursor:pointer;
 }
+.eye.active{stroke:#f97316;}
 
 button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:14px;
-  background:var(--grad);
-  color:white;
-  cursor:pointer;
+  width:100%;padding:14px;border:none;border-radius:14px;
+  background:var(--grad);color:white;font-size:15px;cursor:pointer;
 }
 
 .error{
   color:red;
   font-size:12px;
-  margin-bottom:10px;
+  margin-top:-5px;
+  margin-bottom:15px;
   display:none;
 }
 </style>
@@ -119,7 +82,7 @@ button{
       <img src="logo.png">
     </div>
     <div class="right-header">
-      myUNMUS<br>single sign-on
+      myUNMUS
     </div>
   </div>
 
@@ -132,7 +95,7 @@ button{
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
 
-      <svg class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
+      <svg id="eye1" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle cx="12" cy="12" r="3"/>
       </svg>
@@ -147,34 +110,27 @@ button{
 </div>
 
 <script>
-
-/* DATA USER */
 const users={
- "000":"000",
- "123":"321",
- "999":"999",
- "777":"777"
+ "000":{pass:"000"},
+ "123":{pass:"321"},
+ "999":{pass:"999"},
+ "777":{pass:"777"}
 };
 
-/* LOGIN */
 function login(){
-  const u = document.getElementById("username").value;
-  const p = document.getElementById("password").value;
+  const u = username.value;
+  const p = password.value;
 
-  if(users[u] && users[u] === p){
-    localStorage.setItem("login","true"); // 🔥 simpan status login
+  if(users[u] && users[u].pass === p){
     window.location.href = "dashboard.html";
   } else {
-    document.getElementById("errorText").style.display = "block";
+    errorText.style.display = "block";
   }
 }
 
-/* SHOW PASSWORD */
 function togglePassword(){
-  const pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
+  password.type = password.type === "password" ? "text" : "password";
 }
-
 </script>
 
 </body>
