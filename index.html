@@ -36,6 +36,7 @@ body{margin:0;font-family:Arial;background:var(--bg);}
 }
 
 .form{padding:22px;}
+.hidden{display:none}
 
 .input-group{position:relative;margin-bottom:22px;}
 input{
@@ -63,6 +64,12 @@ button{
   background:var(--grad);color:white;font-size:15px;cursor:pointer;
 }
 
+.footer{
+  display:flex;justify-content:space-between;
+  font-size:13px;margin-top:18px;
+}
+.footer span{color:#ef4444;cursor:pointer;}
+
 .error{
   color:red;
   font-size:12px;
@@ -86,7 +93,8 @@ button{
     </div>
   </div>
 
-  <div class="form">
+  <!-- LOGIN -->
+  <div class="form" id="loginBox">
 
     <div class="input-group">
       <input type="text" id="username" placeholder="myUNMUS ID">
@@ -94,7 +102,6 @@ button{
 
     <div class="input-group">
       <input type="password" id="password" placeholder="Password">
-
       <svg id="eye1" class="eye" viewBox="0 0 24 24" onclick="togglePassword()">
         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
         <circle cx="12" cy="12" r="3"/>
@@ -103,33 +110,102 @@ button{
 
     <div id="errorText" class="error">ID atau Password salah</div>
 
-    <button onclick="login()">Lanjutkan</button>
+    <button id="loginBtn" onclick="login()">Lanjutkan</button>
 
+    <div class="footer">
+      <span id="forgotText" onclick="step1()">Lupa kata sandi?</span>
+      <span onclick="toggleLang()" id="langBtn">ID</span>
+    </div>
+  </div>
+
+  <!-- RESET -->
+  <div class="form hidden" id="step1Box">
+    <div class="input-group">
+      <input type="text" id="resetId" placeholder="Masukkan ID">
+    </div>
+    <button id="nextBtn" onclick="step2()">Lanjut</button>
+    <div class="footer">
+      <span id="back1" onclick="backLogin()">← Kembali</span>
+    </div>
+  </div>
+
+  <div class="form hidden" id="step2Box">
+    <div id="infoText"></div>
+    <div class="input-group">
+      <input type="text" placeholder="Kode verifikasi">
+    </div>
+    <button id="verifyBtn" onclick="step3()">Verifikasi</button>
+    <div class="footer">
+      <span id="back2" onclick="step1()">← Kembali</span>
+    </div>
+  </div>
+
+  <div class="form hidden" id="step3Box">
+    <div class="input-group">
+      <input type="password" placeholder="Password baru">
+    </div>
+    <button id="saveBtn" onclick="backLogin()">Simpan Password</button>
   </div>
 
 </div>
 
 <script>
 const users={
- "000":{pass:"000"},
- "123":{pass:"321"},
- "999":{pass:"999"},
- "777":{pass:"777"}
+ "000":{pass:"000",email:"a@gmail.com"},
+ "123":{pass:"321",email:"b@gmail.com"},
+ "999":{pass:"999",email:"c@gmail.com"},
+ "777":{pass:"777",email:"d@gmail.com"}
 };
 
-function login(){
-  const u = username.value;
-  const p = password.value;
+function show(id){
+  document.querySelectorAll(".form").forEach(e=>e.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
 
-  if(users[u] && users[u].pass === p){
-    window.location.href = "dashboard.html";
+function step1(){show("step1Box")}
+
+function step2(){
+  const id=resetId.value;
+  if(users[id]){
+    infoText.innerHTML="Kode dikirim ke email<br><b>"+users[id].email+"</b>";
+    show("step2Box");
+  }
+}
+
+function step3(){show("step3Box")}
+function backLogin(){show("loginBox")}
+
+function login(){
+  const u=username.value;
+  const p=password.value;
+
+  if(users[u] && users[u].pass===p){
+    window.location.href="dashboard.html";
   } else {
-    errorText.style.display = "block";
+    errorText.style.display="block";
   }
 }
 
 function togglePassword(){
-  password.type = password.type === "password" ? "text" : "password";
+  password.type=password.type==="password"?"text":"password";
+}
+
+let lang="ID";
+function toggleLang(){
+  lang=lang==="ID"?"EN":"ID";
+  langBtn.innerText=lang;
+
+  loginBtn.innerText=lang==="EN"?"Continue":"Lanjutkan";
+  forgotText.innerText=lang==="EN"?"Forgot password?":"Lupa kata sandi?";
+  nextBtn.innerText=lang==="EN"?"Next":"Lanjut";
+  verifyBtn.innerText=lang==="EN"?"Verify":"Verifikasi";
+  saveBtn.innerText=lang==="EN"?"Save Password":"Simpan Password";
+  back1.innerText=lang==="EN"?"← Back":"← Kembali";
+  back2.innerText=lang==="EN"?"← Back":"← Kembali";
+
+  errorText.innerText=lang==="EN"
+    ?"Wrong ID or Password"
+    :"ID atau Password salah";
 }
 </script>
 
