@@ -2,55 +2,97 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard UNMUS</title>
-
+<title>Dashboard</title>
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#f3f4f6;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: repeating-linear-gradient(
+    45deg,
+    #eee,
+    #eee 10px,
+    #ddd 10px,
+    #ddd 20px
+  );
+  text-align: center;
 }
 
-.container{
-  padding:20px;
+/* FOTO PROFIL */
+.profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 40px auto;
+  cursor: pointer;
 }
 
-.card{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.1);
-  margin-top:20px;
+/* GRID */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  gap: 30px;
+  justify-content: center;
 }
 
-button{
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  background:#ef4444;
-  color:white;
-  cursor:pointer;
+/* KOTAK */
+.card {
+  width: 150px;
+  height: 120px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* TEXT */
+.card span {
+  font-size: 12px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Dashboard UNMUS</h2>
+<!-- FOTO PROFIL -->
+<div class="profile" onclick="go('profil.html')"></div>
 
-  <div class="card">
-    <p><b>Selamat datang 👋</b></p>
-    <p>Anda berhasil login ke sistem SSO UNMUS</p>
+<!-- MENU -->
+<div class="container">
+  <div class="card" onclick="go('dosen.html')">
+    <span>Dosen PA</span>
   </div>
 
-  <button onclick="logout()">Logout</button>
+  <div class="card" onclick="go('sks.html')">
+    <span>Jatah SKS</span>
+  </div>
+
+  <div class="card" onclick="go('krs.html')">
+    <span>Periode KRS</span>
+  </div>
+
+  <div class="card" onclick="go('revisi.html')">
+    <span>Revisi KRS</span>
+  </div>
+
+  <div class="card" onclick="go('total.html')">
+    <span>Total SKS</span>
+  </div>
+
+  <div class="card" onclick="go('ipk.html')">
+    <span>IPK</span>
+  </div>
 </div>
 
 <script>
-function logout(){
-  window.location.href = "index.html";
+function go(page){
+  window.location.href = page;
 }
 </script>
 
