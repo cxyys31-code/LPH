@@ -41,15 +41,29 @@ body{
   to{ transform:translateX(-100%); }
 }
 
+/* TEXT ATAS */
+.welcome{
+  margin-top:15px;
+  font-size:18px;
+  font-weight:bold;
+}
+
 /* PROFIL */
 .profile{
   width:110px;
   height:110px;
   border-radius:50%;
   background:#ccc;
-  margin:30px auto;
+  margin:10px auto;
   cursor:pointer;
   border:1px solid #ccc;
+}
+
+/* NAMA */
+.name{
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:20px;
 }
 
 /* GRID */
@@ -97,8 +111,14 @@ body{
   <span>PEMBERITAHUAN! Klik di sini untuk info terbaru</span>
 </div>
 
+<!-- TEXT ATAS -->
+<div class="welcome">Selamat Datang</div>
+
 <!-- FOTO PROFIL -->
 <div class="profile" onclick="go('profil.html')"></div>
+
+<!-- NAMA -->
+<div class="name">Indra Maryanto</div>
 
 <!-- MENU -->
 <div class="container">
@@ -131,6 +151,21 @@ body{
   <div class="item" onclick="go('ipk.html')">
     <div class="card"></div>
     <div class="label">IPK</div>
+  </div>
+
+  <div class="item" onclick="go('jadwal.html')">
+    <div class="card"></div>
+    <div class="label">Jadwal</div>
+  </div>
+
+  <div class="item" onclick="go('menu8.html')">
+    <div class="card"></div>
+    <div class="label">Menu 8</div>
+  </div>
+
+  <div class="item" onclick="go('menu9.html')">
+    <div class="card"></div>
+    <div class="label">Menu 9</div>
   </div>
 
 </div>
