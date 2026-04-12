@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dosen PA</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(90deg, #ff7e00, #ffb347);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+
+/* Card */
+.card {
+    background: white;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Foto */
+.foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: 0 auto 15px;
+}
+
+/* Nama */
+.nama {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Jabatan */
+.jabatan {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Biodata */
+.biodata {
+    text-align: left;
+}
+
+.item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+/* Input modern */
+.input-wrapper {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.label-input {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 12px;
+}
+
+/* Tombol */
+.btn {
+    display: block;
+    text-decoration: none;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.booking { background: #ff7e00; }
+.wa { background: #25D366; }
+.email { background: #007bff; }
+
+</style>
+
+</head>
+<body>
+
+<div class="header">DOSEN PEMBIMBING AKADEMIK</div>
+
+<div class="card">
+
+    <div class="foto"></div>
+
+    <div class="nama">Dr. Maria Yosefa</div>
+    <div class="jabatan">Dosen PA - Pendidikan Matematika</div>
+
+    <div class="biodata">
+        <div class="item"><span class="label">NIDN:</span> 2234567890</div>
+        <div class="item"><span class="label">Email:</span> maria@unmus.ac.id</div>
+        <div class="item"><span class="label">No HP:</span> 0821-1234-5678</div>
+        <div class="item"><span class="label">Alamat:</span> Merauke</div>
+        <div class="item"><span class="label">Pendidikan:</span> S3 Pendidikan Matematika</div>
+        <div class="item"><span class="label">Jabatan Fungsional:</span> Lektor</div>
+        <div class="item"><span class="label">Bidang Keahlian:</span> Matematika Terapan</div>
+        <div class="item"><span class="label">Jam Konsultasi:</span> Senin - Jumat (09:00 - 12:00)</div>
+        <div class="item"><span class="label">Ruangan:</span> Gedung A - 203</div>
+    </div>
+
+    <!-- Input -->
+    <div class="input-wrapper">
+        <span class="label-input">Pilih Jadwal Konsultasi</span>
+
+        <div class="input-group">
+            <div class="input-box">
+                <span class="icon">📅</span>
+                <input type="date" id="tanggal">
+            </div>
+
+            <div class="input-box">
+                <span class="icon">⏰</span>
+                <input type="time" id="jam">
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol -->
+    <div class="btn booking" onclick="bookingWA()">Booking Konsultasi</div>
+
+    <a class="btn wa" href="https://wa.me/6282112345678" target="_blank">
+        Chat WhatsApp
+    </a>
+
+    <a class="btn email" href="mailto:maria@unmus.ac.id">
+        Kirim Email
+    </a>
+
+</div>
+
+<script>
+function bookingWA() {
+    var tgl = document.getElementById("tanggal").value;
+    var jam = document.getElementById("jam").value;
+
+    if(tgl === "" || jam === "") {
+        alert("Isi tanggal dan jam dulu!");
+        return;
+    }
+
+    var pesan = "Halo Bu Maria, saya ingin booking konsultasi pada tanggal " 
+                + tgl + " jam " + jam + ". Terima kasih.";
+
+    var url = "https://wa.me/6282112345678?text=" + encodeURIComponent(pesan);
+
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
