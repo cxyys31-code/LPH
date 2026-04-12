@@ -1,1 +1,153 @@
-jadwal.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Kuliah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        unmus: {
+                            orange: '#FF7D00',
+                            light: '#FFF5EB',
+                            dark: '#E67000',
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-batik {
+                background-image: url('https://www.transparenttextures.com/patterns/batiken.png');
+                background-size: 200px;
+            }
+            .card-shadow {
+                box-shadow: 0 4px 15px rgba(255, 125, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-batik bg-unmus-light min-h-screen font-sans">
+
+    <div class="container mx-auto p-4 max-w-2xl">
+        
+        <div class="bg-white rounded-2xl p-6 card-shadow border-t-4 border-unmus-orange">
+            <div class="flex items-center gap-3 mb-6">
+                <i class="fa fa-calendar text-unmus-orange text-2xl"></i>
+                <h3 class="text-xl font-bold text-gray-700">Jadwal Kuliah</h3>
+            </div>
+            
+            <div class="space-y-5">
+
+                <!-- Senin -->
+                <div class="border-b border-gray-100 pb-4">
+                    <h4 class="font-bold text-unmus-orange text-lg mb-3 flex items-center gap-2">
+                        <i class="fa fa-sun-o"></i> Senin
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">10:30</span>
+                                <span class="block text-xs text-gray-500">s/d 13:50</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Pendidikan Kewarganegaraan <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas C</span></h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">13:50</span>
+                                <span class="block text-xs text-gray-500">s/d 15:30</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Bahasa Inggris <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas A</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rabu -->
+                <div class="border-b border-gray-100 pb-4">
+                    <h4 class="font-bold text-unmus-orange text-lg mb-3 flex items-center gap-2">
+                        <i class="fa fa-book"></i> Rabu
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">08:00</span>
+                                <span class="block text-xs text-gray-500">s/d 10:30</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Algoritma dan Pemrograman Lanjutan <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas B</span></h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">15:30</span>
+                                <span class="block text-xs text-gray-500">s/d 17:10</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Pengantar Teknologi <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas A</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kamis -->
+                <div class="border-b border-gray-100 pb-4">
+                    <h4 class="font-bold text-unmus-orange text-lg mb-3 flex items-center gap-2">
+                        <i class="fa fa-flask"></i> Kamis
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">10:30</span>
+                                <span class="block text-xs text-gray-500">s/d 13:00</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Fisika Dasar <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas C</span></h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">13:00</span>
+                                <span class="block text-xs text-gray-500">s/d 15:30</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Aljabar Linear dan Matriks <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas B</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jum'at -->
+                <div>
+                    <h4 class="font-bold text-unmus-orange text-lg mb-3 flex items-center gap-2">
+                        <i class="fa fa-mosque"></i> Jum'at
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-unmus-light">
+                            <div class="text-center min-w-[90px]">
+                                <span class="font-bold text-unmus-orange">13:00</span>
+                                <span class="block text-xs text-gray-500">s/d 15:30</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">Kalkulus Lanjutan <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full">Kelas C</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
