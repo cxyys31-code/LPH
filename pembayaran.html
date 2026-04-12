@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Pembayaran - SSO UNMUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        unmus: {
+                            orange: '#F97316',
+                            orangedark: '#EA580C',
+                            cream: '#FEF3C7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+
+        body {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .detail-row:hover {
+            background-color: #FFF7ED;
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width="16" height="16" viewBox="0 0 4 5" xmlns="http://www.w3.org/2000/svg"><path fill="%23F97316" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 30px;
+        }
+    </style>
+</head>
+<body class="py-6 px-4">
+
+<div class="max-w-3xl mx-auto">
+    
+    <div class="text-center mb-4">
+        <h1 class="text-2xl font-bold text-gray-800 flex items-center justify-center">
+            <i class="fa-solid fa-money-bill-transfer text-unmus-orange mr-2"></i>
+            INFORMASI PEMBAYARAN
+        </h1>
+        <p class="text-sm text-gray-500">Universitas Musamus</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-orange-100 mb-4">
+        
+        <div class="p-4 space-y-3">
+            
+            <div class="detail-row flex flex-col md:flex-row md:items-center p-2 rounded-lg">
+                <span class="text-gray-500 font-medium w-1/3 text-sm">NO PEMBAYARAN</span>
+                <span class="font-bold text-gray-800 text-base flex-1 bg-gray-50 px-2 py-1 rounded">25202202555201795</span>
+            </div>
+
+            <div class="detail-row flex flex-col md:flex-row md:items-center p-2 rounded-lg">
+                <span class="text-gray-500 font-medium w-1/3 text-sm">PERIODE</span>
+                <div class="flex-1">
+                    <select class="w-full font-bold text-unmus-orange text-base bg-unmus-cream border border-orange-200 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-unmus-orange">
+                        <option>2026 Genap</option>
+                        <option>2026 Ganjil</option>
+                        <option>2025 Genap</option>
+                        <option>2025 Ganjil</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="detail-row flex flex-col md:flex-row md:items-center p-2 rounded-lg">
+                <span class="text-gray-500 font-medium w-1/3 text-sm">JENIS PEMBAYARAN</span>
+                <span class="font-bold text-gray-800 text-base flex-1">Heregistrasi</span>
+            </div>
+
+            <div class="detail-row flex flex-col md:flex-row md:items-center p-2 rounded-lg">
+                <span class="text-gray-500 font-medium w-1/3 text-sm">NOMER VIRTUAL ACCOUNT</span>
+                <span class="font-bold text-gray-800 text-base flex-1 font-mono bg-unmus-cream px-2 py-1 rounded border border-orange-200">9881068700293092</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- STATUS FULL WIDTH -->
+    <div class="mb-4">
+        <div class="bg-white p-4 rounded-xl shadow text-center border-t-4 border-green-500 w-full">
+            <i class="fa-solid fa-circle-check text-green-500 text-lg mb-1"></i>
+            <p class="text-sm text-gray-500 font-medium">STATUS BAYAR</p>
+            <p class="text-lg font-bold text-green-600 mt-1">Lunas</p>
+        </div>
+    </div>
+
+    <div class="text-center text-red-600 bg-red-50 p-3 rounded-lg border border-red-200 text-sm">
+        Silakan refresh kembali, jika data yang ditampilkan belum berubah setelah pembayaran
+    </div>
+
+</div>
+
+</body>
+</html>
