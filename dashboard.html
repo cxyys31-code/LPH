@@ -25,28 +25,57 @@ body{
   text-align:center;
 }
 
-/* PROFIL */
-.profile{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:#ccc;
-  margin:40px auto;
+/* EFFECT BORDER ORANYE */
+.glow{
+  border:2px solid;
+  border-image: linear-gradient(45deg, orange, gold, darkorange) 1;
+  box-shadow: 0 0 10px orange, 0 0 20px rgba(255,165,0,0.5);
+}
+
+/* BANNER */
+.banner{
+  width:100%;
+  background:black;
+  color:orange;
+  padding:10px 0;
+  overflow:hidden;
   cursor:pointer;
 }
+
+.banner span{
+  display:inline-block;
+  white-space:nowrap;
+  animation: jalan 10s linear infinite;
+}
+
+@keyframes jalan{
+  from{ transform:translateX(100%); }
+  to{ transform:translateX(-100%); }
+}
+
+/* PROFIL */
+.profile{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#ccc;
+  margin:30px auto;
+  cursor:pointer;
+}
+.profile.glow{}
 
 /* GRID */
 .container{
   display:grid;
-  grid-template-columns:repeat(2,150px);
-  gap:30px;
+  grid-template-columns:repeat(2,120px);
+  gap:20px;
   justify-content:center;
 }
 
 /* KOTAK */
 .card{
-  width:150px;
-  height:120px;
+  width:120px;
+  height:90px;
   background:#ccc;
   display:flex;
   align-items:center;
@@ -54,45 +83,49 @@ body{
   cursor:pointer;
   transition:0.2s;
 }
-
 .card:hover{
   transform:scale(1.05);
 }
 
 .card span{
-  font-size:12px;
+  font-size:11px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- BANNER -->
+<div class="banner glow" onclick="go('pengumuman.html')">
+  <span>🔥 PEMBERITAHUAN! Klik di sini untuk info terbaru 🔥</span>
+</div>
+
 <!-- FOTO PROFIL -->
-<div class="profile" onclick="go('profil.html')"></div>
+<div class="profile glow" onclick="go('profil.html')"></div>
 
 <!-- MENU -->
 <div class="container">
-  <div class="card" onclick="go('dosen.html')">
+  <div class="card glow" onclick="go('dosen.html')">
     <span>Dosen PA</span>
   </div>
 
-  <div class="card" onclick="go('sks.html')">
+  <div class="card glow" onclick="go('sks.html')">
     <span>Jatah SKS</span>
   </div>
 
-  <div class="card" onclick="go('krs.html')">
+  <div class="card glow" onclick="go('krs.html')">
     <span>Periode KRS</span>
   </div>
 
-  <div class="card" onclick="go('revisi.html')">
+  <div class="card glow" onclick="go('revisi.html')">
     <span>Revisi KRS</span>
   </div>
 
-  <div class="card" onclick="go('total.html')">
+  <div class="card glow" onclick="go('total.html')">
     <span>Total SKS</span>
   </div>
 
-  <div class="card" onclick="go('ipk.html')">
+  <div class="card glow" onclick="go('ipk.html')">
     <span>IPK</span>
   </div>
 </div>
