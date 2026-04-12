@@ -55,29 +55,36 @@ body{
 /* GRID */
 .container{
   display:grid;
-  grid-template-columns:repeat(2,100px);
-  gap:15px;
+  grid-template-columns:repeat(3,90px);
+  gap:20px;
   justify-content:center;
+}
+
+/* ITEM */
+.item{
+  text-align:center;
+  cursor:pointer;
 }
 
 /* KOTAK */
 .card{
-  width:100px;
-  height:80px;
+  width:90px;
+  height:70px;
   background:#f5f5f5;
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
-  transition:0.2s;
   border:1px solid #ccc;
+  transition:0.2s;
 }
 
 .card:hover{
   transform:scale(1.05);
 }
 
-.card span{
+/* TEKS */
+.label{
+  margin-top:5px;
   font-size:11px;
 }
 </style>
@@ -95,29 +102,37 @@ body{
 
 <!-- MENU -->
 <div class="container">
-  <div class="card" onclick="go('dosen.html')">
-    <span>Dosen PA</span>
+  
+  <div class="item" onclick="go('dosen.html')">
+    <div class="card"></div>
+    <div class="label">Dosen PA</div>
   </div>
 
-  <div class="card" onclick="go('sks.html')">
-    <span>Pembayaran</span>
+  <div class="item" onclick="go('sks.html')">
+    <div class="card"></div>
+    <div class="label">Jatah SKS</div>
   </div>
 
-  <div class="card" onclick="go('krs.html')">
-    <span>Jadwal</span>
+  <div class="item" onclick="go('krs.html')">
+    <div class="card"></div>
+    <div class="label">Periode KRS</div>
   </div>
 
-  <div class="card" onclick="go('revisi.html')">
-    <span>KRS</span>
+  <div class="item" onclick="go('revisi.html')">
+    <div class="card"></div>
+    <div class="label">Revisi KRS</div>
   </div>
 
-  <div class="card" onclick="go('total.html')">
-    <span>Total SKS</span>
+  <div class="item" onclick="go('total.html')">
+    <div class="card"></div>
+    <div class="label">Total SKS</div>
   </div>
 
-  <div class="card" onclick="go('ipk.html')">
-    <span>IPK</span>
+  <div class="item" onclick="go('ipk.html')">
+    <div class="card"></div>
+    <div class="label">IPK</div>
   </div>
+
 </div>
 
 <script>
