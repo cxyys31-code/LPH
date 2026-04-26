@@ -186,13 +186,14 @@ function step3(){show("step3Box")}
 function backLogin(){show("loginBox")}
 
 function login(){
-  const u=username.value;
-  const p=password.value;
+  const u = document.getElementById("username").value.trim();
+  const p = document.getElementById("password").value.trim();
+  const error = document.getElementById("errorText");
 
-  if(users[u] && users[u].pass===p){
-    window.location.href="dashboard.html";
+  if(users[u] && users[u].pass === p){
+    window.location.href = "dashboard.html";
   } else {
-    errorText.style.display="block";
+    error.style.display = "block";
   }
 }
 
