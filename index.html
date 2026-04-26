@@ -175,7 +175,9 @@ function show(id){
 function step1(){show("step1Box")}
 
 function step2(){
-  const id=resetId.value;
+  const id = document.getElementById("resetId").value.trim();
+  const infoText = document.getElementById("infoText");
+
   if(users[id]){
     infoText.innerHTML="Kode dikirim ke email<br><b>"+users[id].email+"</b>";
     show("step2Box");
@@ -191,21 +193,37 @@ function login(){
   const error = document.getElementById("errorText");
 
   if(users[u] && users[u].pass === p){
+    // 🔥 INI YANG KURANG SEBELUMNYA
+    localStorage.setItem("login","true");
+    localStorage.setItem("user", u);
+
     window.location.href = "dashboard.html";
   } else {
     error.style.display = "block";
   }
 }
 
-
 function togglePassword(){
-  password.type=password.type==="password"?"text":"password";
+  const password = document.getElementById("password");
+  const eye1 = document.getElementById("eye1");
+
+  password.type = password.type==="password"?"text":"password";
   eye1.classList.toggle("closed");
   eye1.classList.toggle("active");
 }
 
 let lang="ID";
 function toggleLang(){
+  const langBtn = document.getElementById("langBtn");
+  const loginBtn = document.getElementById("loginBtn");
+  const forgotText = document.getElementById("forgotText");
+  const nextBtn = document.getElementById("nextBtn");
+  const verifyBtn = document.getElementById("verifyBtn");
+  const saveBtn = document.getElementById("saveBtn");
+  const back1 = document.getElementById("back1");
+  const back2 = document.getElementById("back2");
+  const errorText = document.getElementById("errorText");
+
   lang=lang==="ID"?"EN":"ID";
   langBtn.innerText=lang;
 
