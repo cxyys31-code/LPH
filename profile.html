@@ -101,16 +101,21 @@ body {
     margin-bottom: 10px;
 }
 
-/* ===== BUTTON ===== */
-.btn {
-    display: block;
-    width: 100%;
+/* ===== BUTTON GRID ===== */
+.btn-group{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
     margin-top: 10px;
-    padding: 10px;
-    border-radius: 10px;
+}
+
+.btn {
+    padding: 8px;
+    border-radius: 8px;
     color: white;
     font-weight: bold;
-    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
     cursor: pointer;
     background: linear-gradient(135deg, #fb923c, #f97316);
     transition: 0.2s;
@@ -161,9 +166,11 @@ body {
     <div class="nama">Jesse Pinkman</div>
     <div class="prodi">Teknik Informatika</div>
 
-    <!-- Tombol -->
-    <div class="btn" onclick="gantiPassword()">Ganti Kata Sandi</div>
-    <div class="btn" onclick="logout()">Logout</div>
+    <!-- Tombol 2 kolom -->
+    <div class="btn-group">
+        <div class="btn" onclick="gantiPassword()">Ganti Sandi</div>
+        <div class="btn" onclick="logout()">Logout</div>
+    </div>
 
     <div class="biodata">
         <div class="item"><span class="label">NIM:</span> 2022012345</div>
