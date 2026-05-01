@@ -12,7 +12,7 @@ body {
     background: #f4f4f4;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 .bg{
     position: fixed;
     top:0;
@@ -37,7 +37,7 @@ body {
     z-index:-1;
 }
 
-/* ===== BANNER ===== */
+/* BANNER */
 .banner{
     background:#000;
     display:flex;
@@ -68,7 +68,7 @@ body {
     margin-top:4px;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .card {
     background: white;
     margin: 20px;
@@ -78,7 +78,6 @@ body {
     text-align: center;
 }
 
-/* Foto */
 .foto {
     width: 110px;
     height: 110px;
@@ -89,46 +88,20 @@ body {
     background-position:center;
 }
 
-/* Nama */
 .nama {
     font-size: 20px;
     font-weight: bold;
 }
 
-/* Prodi */
 .prodi {
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-/* ===== BUTTON GRID ===== */
-.btn-group{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.btn {
-    padding: 8px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-    cursor: pointer;
-    background: linear-gradient(135deg, #fb923c, #f97316);
-    transition: 0.2s;
-}
-
-.btn:hover {
-    background: linear-gradient(135deg, #f97316, #ea580c);
-}
-
-/* Biodata */
+/* BIODATA */
 .biodata {
     text-align: left;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .item {
@@ -141,16 +114,38 @@ body {
 .label {
     font-weight: bold;
 }
+
+/* BUTTON */
+.btn-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:15px;
+}
+
+.btn {
+    padding:8px;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    font-size:12px;
+    text-align:center;
+    cursor:pointer;
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    transition:0.2s;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+}
 </style>
 
 </head>
 <body>
 
-<!-- Background -->
 <div class="bg"></div>
 <div class="overlay"></div>
 
-<!-- Banner -->
 <div class="banner">
     <img src="logo.png" class="logo">
     <div class="text-group">
@@ -166,12 +161,6 @@ body {
     <div class="nama">Jesse Pinkman</div>
     <div class="prodi">Teknik Informatika</div>
 
-    <!-- Tombol 2 kolom -->
-    <div class="btn-group">
-        <div class="btn" onclick="gantiPassword()">Ganti Sandi</div>
-        <div class="btn" onclick="logout()">Logout</div>
-    </div>
-
     <div class="biodata">
         <div class="item"><span class="label">NIM:</span> 2022012345</div>
         <div class="item"><span class="label">Email:</span> jessepinkman@email.com</div>
@@ -184,6 +173,12 @@ body {
         <div class="item"><span class="label">Status:</span> Aktif</div>
     </div>
 
+    <!-- tombol dipindah ke bawah -->
+    <div class="btn-group">
+        <div class="btn" onclick="gantiPassword()">Ganti Sandi</div>
+        <div class="btn" onclick="logout()">Logout</div>
+    </div>
+
 </div>
 
 <script>
@@ -193,7 +188,7 @@ function logout(){
 }
 
 function gantiPassword(){
-    alert("Fitur ganti kata sandi belum tersedia");
+    alert("Fitur ganti kata sandi belum tersedia 😄");
 }
 </script>
 
