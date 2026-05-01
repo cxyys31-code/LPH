@@ -3,20 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>akademik</title>
+<title>Akademik</title>
 
 <style>
-html, body {
+body {
     margin: 0;
-    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
 }
 
-body {
-    background: url('404.jpg') no-repeat center center;
-    background-size: cover;
+/* ===== Banner ===== */
+.banner {
+    background: #000;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Judul utama */
+.title {
+    font-size: 16px; /* diperkecil */
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;      /* tidak turun baris */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* kalau kepanjangan jadi ... */
+}
+
+/* Sub judul */
+.subtitle {
+    font-size: 12px;
+    color: #facc15;
+    margin-top: 6px;
+}
+
+/* ===== Container ===== */
+.container {
+    padding: 20px;
+    margin-top: 15px;
+}
+
+/* ===== Grid ===== */
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* ===== Item ===== */
+.item {
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item:hover {
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.item span {
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+}
+
+.arrow {
+    color: white;
+    opacity: 0.8;
 }
 </style>
 </head>
+
 <body>
+
+<!-- Banner -->
+<div class="banner">
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="text-group">
+        <div class="title">Universitas Musamus Merauke</div>
+        <div class="subtitle">Akademik</div>
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="container">
+    <div class="menu">
+
+        <div class="item"><span>Informasi MBKM</span><span class="arrow">›</span></div>
+        <div class="item"><span>Pendaftaran Program MBKM</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Pengumuman Seleksi MBKM</span><span class="arrow">›</span></div>
+        <div class="item"><span>Cetak Kartu Ujian</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Transkrip Nilai</span><span class="arrow">›</span></div>
+        <div class="item"><span>Pendaftaran Tugas Akhir</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Surat Keterangan Pendamping Ijazah</span><span class="arrow">›</span></div>
+        <div class="item"><span>Riwayat Bimbingan Akademik</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Hasil Kuisioner</span><span class="arrow">›</span></div>
+        <div class="item"><span>Pengajuan Yudisium</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Pengajuan Wisuda</span><span class="arrow">›</span></div>
+        <div class="item"><span>Informasi Akademik</span><span class="arrow">›</span></div>
+
+        <div class="item"><span>Pengajuan Cuti</span><span class="arrow">›</span></div>
+        <div class="item"><span>Materi Kuliah</span><span class="arrow">›</span></div>
+
+    </div>
+</div>
+
 </body>
 </html>
