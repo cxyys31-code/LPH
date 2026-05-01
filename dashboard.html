@@ -16,11 +16,32 @@ body{
   margin:0;
   font-family:Arial;
   text-align:center;
+}
 
+/* BACKGROUND LAYER */
+.bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background-image:url("bg.png");
   background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-position:center bottom;
+  opacity:0.25; /* biar tidak ganggu */
+  z-index:-2;
+}
+
+/* OVERLAY BIAR SOFT */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0.6;
+  z-index:-1;
 }
 
 /* BANNER */
@@ -28,18 +49,20 @@ body{
   width:100%;
   background: linear-gradient(90deg, orange, darkorange);
   color:white;
-  padding:6px 0;
+  padding:10px 0;
   overflow:hidden;
   cursor:pointer;
-  font-size:13px;
+  font-size:18px;
+  font-weight:bold;
 }
 
 .banner span{
   display:inline-block;
   white-space:nowrap;
-  animation: jalan 10s linear infinite;
+  animation: jalan 8s linear infinite;
 }
 
+/* ANIMASI JALAN */
 @keyframes jalan{
   from{ transform:translateX(100%); }
   to{ transform:translateX(-100%); }
@@ -48,7 +71,7 @@ body{
 /* TEXT */
 .welcome{
   margin-top:20px;
-  font-size:22px; /* diperbesar */
+  font-size:22px;
   font-weight:bold;
 }
 
@@ -65,7 +88,7 @@ body{
 }
 
 .name{
-  font-size:14px; /* diperkecil */
+  font-size:14px;
   font-weight:bold;
   margin-bottom:10px;
 }
@@ -76,7 +99,7 @@ body{
   grid-template-columns:repeat(3,90px);
   gap:20px;
   justify-content:center;
-  margin-top:20px; /* ini bikin menu turun */
+  margin-top:20px;
 }
 
 .item{
@@ -119,8 +142,11 @@ body{
 
 <body>
 
+<div class="bg"></div>
+<div class="overlay"></div>
+
 <div class="banner" onclick="go('pengumuman.html')">
-  <span>PENGUMUMAN!!!</span>
+  <span>🔊 PENGUMUMAN!!! 🔊</span>
 </div>
 
 <div class="welcome">SELAMAT DATANG</div>
