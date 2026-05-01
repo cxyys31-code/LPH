@@ -6,17 +6,120 @@
 <title>Virtual Class</title>
 
 <style>
-html, body {
+body {
     margin: 0;
-    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
 }
 
-body {
-    background: url('404.jpg') no-repeat center center;
-    background-size: cover;
+/* ===== BACKGROUND ===== */
+.bg{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:url("bg.png");
+    background-size:cover;
+    background-position:center bottom;
+    opacity:0.25;
+    z-index:-2;
+}
+
+.overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:white;
+    opacity:0.6;
+    z-index:-1;
+}
+
+/* ===== BANNER ===== */
+.banner {
+    background: #000;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #facc15;
+    margin-top: 6px;
+}
+
+/* ===== MENU LIST ===== */
+.menu {
+    margin-top: 10px;
+}
+
+.item {
+    padding: 18px 20px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.item:hover {
+    background: rgba(255,255,255,0.9);
+    padding-left: 25px;
 }
 </style>
 </head>
+
 <body>
+
+<!-- Background -->
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- Banner -->
+<div class="banner">
+    <img src="logo.png" class="logo">
+    <div class="text-group">
+        <div class="title">Universitas Musamus Merauke</div>
+        <div class="subtitle">Virtual Class</div>
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="menu">
+
+    <div class="item">Materi Kuliah</div>
+    <div class="item">Tugas Kuliah</div>
+    <div class="item">Ujian Kelas</div>
+    <div class="item">Diskusi Online</div>
+    <div class="item">Agenda Kelas</div>
+    <div class="item">Agenda Pribadi</div>
+    <div class="item">Referensi</div>
+    <div class="item">Forum Diskusi</div>
+
+</div>
+
 </body>
 </html>
