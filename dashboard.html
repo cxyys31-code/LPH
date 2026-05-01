@@ -45,7 +45,7 @@ body{
 
 /* BANNER */
 .banner{
-  background: #000;
+  background:#000;
   display:flex;
   align-items:center;
   padding:15px 20px;
@@ -75,7 +75,7 @@ body{
   margin-top:6px;
 }
 
-/* PENGUMUMAN */
+/* ===== PENGUMUMAN ===== */
 .pengumuman{
   width:100%;
   overflow:hidden;
@@ -83,18 +83,44 @@ body{
   margin-top:10px;
 }
 
-.pengumuman span{
-  display:inline-block;
+/* isi berjalan */
+.marquee{
+  display:flex;
+  align-items:center;
+  gap:8px;
   white-space:nowrap;
-  color:orange;
-  font-weight:bold;
-  font-size:16px;
-  animation:jalan 10s linear infinite;
+  padding-left:100%;
+  animation:jalan 12s linear infinite;
 }
 
+/* teks */
+.marquee span{
+  color:orange;
+  font-weight:bold;
+  font-size:13px;
+}
+
+/* icon speaker */
+.icon{
+  width:16px;
+  height:16px;
+  fill:orange;
+  animation:getar 0.6s infinite;
+}
+
+/* animasi jalan */
 @keyframes jalan{
-  from{ transform:translateX(100%); }
-  to{ transform:translateX(-100%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-200%); }
+}
+
+/* animasi getar speaker */
+@keyframes getar{
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(1px); }
+  50%  { transform: translateX(-1px); }
+  75%  { transform: translateX(1px); }
+  100% { transform: translateX(0); }
 }
 
 /* TEXT */
@@ -175,13 +201,23 @@ body{
     <img src="logo.png" class="logo">
     <div class="text-group">
         <div class="title">Universitas Musamus Merauke</div>
-        <div class="subtitle"></div>
+        <div class="subtitle">Akademik</div>
     </div>
 </div>
 
 <!-- Pengumuman -->
 <div class="pengumuman" onclick="go('pengumuman.html')">
+  <div class="marquee">
+    
+    <!-- Speaker Icon -->
+    <svg class="icon" viewBox="0 0 24 24">
+      <path d="M3 10v4h4l5 4V6L7 10H3z"></path>
+      <path d="M16 7c1.5 1.5 1.5 8.5 0 10"></path>
+    </svg>
+
     <span>PENGUMUMAN!</span>
+
+  </div>
 </div>
 
 <div class="welcome">SELAMAT DATANG</div>
