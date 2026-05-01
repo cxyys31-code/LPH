@@ -60,7 +60,6 @@ body {
     font-size:16px;
     font-weight:600;
     color:#ffffff;
-    white-space:nowrap;
 }
 
 .subtitle{
@@ -99,12 +98,32 @@ body {
 /* Prodi */
 .prodi {
     color: #666;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #f97316, #ea580c);
 }
 
 /* Biodata */
 .biodata {
     text-align: left;
+    margin-top: 15px;
 }
 
 .item {
@@ -131,7 +150,7 @@ body {
     <img src="logo.png" class="logo">
     <div class="text-group">
         <div class="title">Universitas Musamus Merauke</div>
-        <div class="subtitle">Profile</div>
+        <div class="subtitle">Profil</div>
     </div>
 </div>
 
@@ -141,6 +160,10 @@ body {
 
     <div class="nama">Jesse Pinkman</div>
     <div class="prodi">Teknik Informatika</div>
+
+    <!-- Tombol -->
+    <div class="btn" onclick="gantiPassword()">Ganti Kata Sandi</div>
+    <div class="btn" onclick="logout()">Logout</div>
 
     <div class="biodata">
         <div class="item"><span class="label">NIM:</span> 2022012345</div>
@@ -155,6 +178,17 @@ body {
     </div>
 
 </div>
+
+<script>
+function logout(){
+    localStorage.removeItem("login");
+    window.location.href = "index.html";
+}
+
+function gantiPassword(){
+    alert("Fitur ganti kata sandi belum tersedia");
+}
+</script>
 
 </body>
 </html>
