@@ -12,16 +12,34 @@ body {
     background: #f4f4f4;
 }
 
-/* Header */
-.header {
-    background: linear-gradient(90deg, #ff7e00, #ffb347);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-weight: bold;
+/* ===== BANNER ===== */
+.banner{
+    background:#000;
+    display:flex;
+    align-items:center;
+    padding:15px 20px;
 }
 
-/* Card */
+.logo{
+    width:45px;
+    height:45px;
+    margin-right:12px;
+}
+
+.title{
+    font-size:16px;
+    font-weight:600;
+    color:#ffffff;
+    white-space:nowrap;
+}
+
+.subtitle{
+    font-size:14px;
+    color:#facc15;
+    margin-left:10px;
+}
+
+/* ===== CARD ===== */
 .card {
     background: white;
     margin: 20px;
@@ -38,10 +56,10 @@ body {
     border-radius: 50%;
     background: #ddd;
     margin: 0 auto 15px;
-  background-image:url("WW.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+    background-image:url("WW.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 /* Nama */
@@ -72,7 +90,7 @@ body {
     font-weight: bold;
 }
 
-/* Input modern */
+/* Input */
 .input-wrapper {
     text-align: left;
     margin-top: 15px;
@@ -129,11 +147,16 @@ body {
 .email { background: #007bff; }
 
 </style>
-
 </head>
+
 <body>
 
-<div class="header">DOSEN PEMBIMBING AKADEMIK</div>
+<!-- Banner -->
+<div class="banner">
+    <img src="logo.png" class="logo">
+    <div class="title">Universitas Musamus Merauke</div>
+    <div class="subtitle">Dosen PA</div>
+</div>
 
 <div class="card">
 
@@ -154,7 +177,6 @@ body {
         <div class="item"><span class="label">Ruangan:</span> Gedung A - 203</div>
     </div>
 
-    <!-- Input -->
     <div class="input-wrapper">
         <span class="label-input">Pilih Jadwal Konsultasi</span>
 
@@ -171,7 +193,6 @@ body {
         </div>
     </div>
 
-    <!-- Tombol -->
     <div class="btn booking" onclick="bookingWA()">Konsultasi</div>
 
     <a class="btn wa" href="https://wa.me/6282131162100" target="_blank">
