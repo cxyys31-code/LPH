@@ -41,14 +41,14 @@ body{
   to{ transform:translateX(-100%); }
 }
 
-/* TEXT ATAS */
+/* TEXT */
 .welcome{
   margin-top:15px;
   font-size:18px;
   font-weight:bold;
 }
 
-/* PROFIL */
+/* PROFILE */
 .profile{
   width:110px;
   height:110px;
@@ -56,14 +56,12 @@ body{
   margin:10px auto;
   cursor:pointer;
   border:1px solid #ccc;
-
   background-image:url("JessePinkman.png");
   background-size:cover;
   background-position:center;
-  background-repeat:no-repeat;
 }
 
-/* NAMA */
+/* NAME */
 .name{
   font-size:16px;
   font-weight:bold;
@@ -80,32 +78,37 @@ body{
 
 /* ITEM */
 .item{
-  text-align:center;
   cursor:pointer;
 }
 
-/* KOTAK */
+/* CARD */
 .card{
   width:90px;
   height:70px;
   background:#f5f5f5;
   border:1px solid #ccc;
-  transition:0.2s;
+  border-radius:12px;
+  overflow:hidden;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-position:center;
+  transition:0.2s;
 }
 
 .card:hover{
   transform:scale(1.05);
 }
 
-/* TEKS */
+/* IMAGE AUTO FIT */
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* TEXT */
 .label{
   margin-top:5px;
   font-size:11px;
@@ -115,69 +118,60 @@ body{
 
 <body>
 
-<!-- BANNER -->
 <div class="banner" onclick="go('pengumuman.html')">
   <span>PENGUMUMAN!!!</span>
 </div>
 
-<!-- TEXT ATAS -->
 <div class="welcome">SELAMAT DATANG</div>
 
-<!-- FOTO PROFIL -->
-<div class="profile" onclick="go('profil.html')">
-</div>
+<div class="profile" onclick="go('profil.html')"></div>
 
-
-<!-- NAMA -->
 <div class="name">JESSE PINKMAN</div>
 
-<!-- MENU -->
 <div class="container">
-  
+
   <div class="item" onclick="go('dosen.html')">
-    <div class="card">
-<img src="dosen.png" width="40">
-</div>
+    <div class="card"><img src="dosen.png"></div>
     <div class="label">Dosen PA</div>
   </div>
 
   <div class="item" onclick="go('akademik.html')">
-    <div class="card"></div>
+    <div class="card"><img src="akademik.png"></div>
     <div class="label">Akademik</div>
   </div>
 
   <div class="item" onclick="go('pembayaran.html')">
-    <div class="card"></div>
+    <div class="card"><img src="pembayaran.png"></div>
     <div class="label">Pembayaran</div>
   </div>
 
   <div class="item" onclick="go('krs.html')">
-    <div class="card"></div>
+    <div class="card"><img src="krs.png"></div>
     <div class="label">KRS</div>
   </div>
 
   <div class="item" onclick="go('khs.html')">
-    <div class="card"></div>
+    <div class="card"><img src="khs.png"></div>
     <div class="label">KHS</div>
   </div>
 
   <div class="item" onclick="go('jadwal.html')">
-    <div class="card"></div>
+    <div class="card"><img src="jadwal.png"></div>
     <div class="label">Jadwal</div>
   </div>
 
   <div class="item" onclick="go('vc.html')">
-    <div class="card"></div>
+    <div class="card"><img src="vc.png"></div>
     <div class="label">Virtual Class</div>
   </div>
 
   <div class="item" onclick="go('fs.html')">
-    <div class="card"></div>
+    <div class="card"><img src="fs.png"></div>
     <div class="label">File Sharing</div>
   </div>
 
   <div class="item" onclick="go('ipk.html')">
-    <div class="card"></div>
+    <div class="card"><img src="ipk.png"></div>
     <div class="label">IP komulatif</div>
   </div>
 
