@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informasi Pembayaran - SSO UNMUS</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -21,12 +22,65 @@
             }
         }
     </script>
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
 
-        body {
-            background-color: #ffffff;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    <style>
+        body { font-family: 'Poppins', sans-serif; margin:0; }
+
+        /* ===== BACKGROUND ===== */
+        .bg{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-image:url("bg.png");
+            background-size:cover;
+            background-position:center bottom;
+            opacity:0.25;
+            z-index:-2;
+        }
+
+        .overlay{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:white;
+            opacity:0.6;
+            z-index:-1;
+        }
+
+        /* ===== BANNER ===== */
+        .banner{
+            background:#000;
+            display:flex;
+            align-items:center;
+            padding:15px 20px;
+        }
+
+        .logo{
+            width:45px;
+            height:45px;
+            margin-right:12px;
+        }
+
+        .text-group{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .title{
+            font-size:16px;
+            font-weight:600;
+            color:#ffffff;
+            white-space:nowrap;
+        }
+
+        .subtitle{
+            font-size:13px;
+            color:#facc15;
+            margin-top:4px;
         }
 
         .detail-row:hover {
@@ -43,17 +97,23 @@
         }
     </style>
 </head>
+
 <body class="py-6 px-4">
 
-<div class="max-w-3xl mx-auto">
-    
-    <div class="text-center mb-4">
-        <h1 class="text-2xl font-bold text-gray-800 flex items-center justify-center">
-            <i class="fa-solid fa-money-bill-transfer text-unmus-orange mr-2"></i>
-            INFORMASI PEMBAYARAN
-        </h1>
-        <p class="text-sm text-gray-500">Universitas Musamus</p>
+<!-- Background -->
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- Banner -->
+<div class="banner">
+    <img src="logo.png" class="logo">
+    <div class="text-group">
+        <div class="title">Universitas Musamus Merauke</div>
+        <div class="subtitle">Pembayaran</div>
     </div>
+</div>
+
+<div class="max-w-3xl mx-auto mt-6">
 
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-orange-100 mb-4">
         
@@ -89,10 +149,8 @@
         </div>
     </div>
 
-    <!-- STATUS FULL WIDTH -->
     <div class="mb-4">
         <div class="bg-white p-4 rounded-xl shadow text-center border-t-4 border-green-500 w-full">
-            <i class="fa-solid fa-circle-check text-green-500 text-lg mb-1"></i>
             <p class="text-sm text-gray-500 font-medium">STATUS BAYAR</p>
             <p class="text-lg font-bold text-green-600 mt-1">Lunas</p>
         </div>
