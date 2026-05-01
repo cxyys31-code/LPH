@@ -3,20 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile</title>
+<title>Profil Mahasiswa</title>
 
 <style>
-html, body {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    height: 100%;
+    background: #f4f4f4;
 }
 
-body {
-    background: url('404.jpg') no-repeat center center;
-    background-size: cover;
+/* ===== BACKGROUND ===== */
+.bg{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:url("bg.png");
+    background-size:cover;
+    background-position:center bottom;
+    opacity:0.25;
+    z-index:-2;
+}
+
+.overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:white;
+    opacity:0.6;
+    z-index:-1;
+}
+
+/* ===== BANNER ===== */
+.banner{
+    background:#000;
+    display:flex;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    width:45px;
+    height:45px;
+    margin-right:12px;
+}
+
+.text-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.title{
+    font-size:16px;
+    font-weight:600;
+    color:#ffffff;
+    white-space:nowrap;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#facc15;
+    margin-top:4px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: white;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Foto */
+.foto {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background-image:url("JessePinkman.png");
+    background-size:cover;
+    background-position:center;
+}
+
+/* Nama */
+.nama {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Prodi */
+.prodi {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Biodata */
+.biodata {
+    text-align: left;
+}
+
+.item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
 }
 </style>
+
 </head>
 <body>
+
+<!-- Background -->
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- Banner -->
+<div class="banner">
+    <img src="logo.png" class="logo">
+    <div class="text-group">
+        <div class="title">Universitas Musamus Merauke</div>
+        <div class="subtitle">Profile</div>
+    </div>
+</div>
+
+<div class="card">
+
+    <div class="foto"></div>
+
+    <div class="nama">Jesse Pinkman</div>
+    <div class="prodi">Teknik Informatika</div>
+
+    <div class="biodata">
+        <div class="item"><span class="label">NIM:</span> 2022012345</div>
+        <div class="item"><span class="label">Email:</span> jessepinkman@email.com</div>
+        <div class="item"><span class="label">No HP:</span> +62 812-3456-7890</div>
+        <div class="item"><span class="label">Alamat:</span> Jl. Mawar No. 12</div>
+        <div class="item"><span class="label">Fakultas:</span> Teknik</div>
+        <div class="item"><span class="label">Program Studi:</span> Teknik Informatika</div>
+        <div class="item"><span class="label">Semester:</span> 6</div>
+        <div class="item"><span class="label">IPK:</span> 3.75</div>
+        <div class="item"><span class="label">Status:</span> Aktif</div>
+    </div>
+
+</div>
+
 </body>
 </html>
