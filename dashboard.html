@@ -18,7 +18,7 @@ body{
   text-align:center;
 }
 
-/* BACKGROUND LAYER */
+/* BACKGROUND */
 .bg{
   position:fixed;
   top:0;
@@ -28,11 +28,10 @@ body{
   background-image:url("bg.png");
   background-size:cover;
   background-position:center bottom;
-  opacity:0.25; /* biar tidak ganggu */
+  opacity:0.25;
   z-index:-2;
 }
 
-/* OVERLAY BIAR SOFT */
 .overlay{
   position:fixed;
   top:0;
@@ -46,23 +45,53 @@ body{
 
 /* BANNER */
 .banner{
+  background: #000;
+  display:flex;
+  align-items:center;
+  padding:15px 20px;
+}
+
+.logo{
+  width:45px;
+  height:45px;
+  margin-right:12px;
+}
+
+.text-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.title{
+  font-size:16px;
+  font-weight:600;
+  color:#fff;
+  white-space:nowrap;
+}
+
+.subtitle{
+  font-size:12px;
+  color:#facc15;
+  margin-top:6px;
+}
+
+/* PENGUMUMAN */
+.pengumuman{
   width:100%;
-  background: linear-gradient(90deg, orange, darkorange);
-  color:white;
-  padding:10px 0;
   overflow:hidden;
   cursor:pointer;
-  font-size:18px;
-  font-weight:bold;
+  margin-top:10px;
 }
 
-.banner span{
+.pengumuman span{
   display:inline-block;
   white-space:nowrap;
-  animation: jalan 8s linear infinite;
+  color:orange;
+  font-weight:bold;
+  font-size:16px;
+  animation:jalan 10s linear infinite;
 }
 
-/* ANIMASI JALAN */
 @keyframes jalan{
   from{ transform:translateX(100%); }
   to{ transform:translateX(-100%); }
@@ -109,15 +138,10 @@ body{
 .card{
   width:90px;
   height:70px;
-  background:transparent;
-  border:none;
   border-radius:12px;
-  overflow:hidden;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   transition:0.2s;
 }
 
@@ -142,54 +166,22 @@ body{
 
 <body>
 
+<!-- Background -->
+<div class="bg"></div>
+<div class="overlay"></div>
+
 <!-- Banner -->
 <div class="banner">
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="logo.png" class="logo">
     <div class="text-group">
         <div class="title">Universitas Musamus Merauke</div>
         <div class="subtitle">Akademik</div>
     </div>
 </div>
 
-<style>
-.banner {
-    background: #000;
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-}
-
-.logo {
-    width: 45px;
-    height: 45px;
-    margin-right: 12px;
-}
-
-.text-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.subtitle {
-    font-size: 12px;
-    color: #facc15;
-    margin-top: 6px;
-}
-</style>
-
-<div class="bg"></div>
-<div class="overlay"></div>
- <onclick="go('pengumuman.html')">
-  <span>PENGUMUMAN!</span>
+<!-- Pengumuman -->
+<div class="pengumuman" onclick="go('pengumuman.html')">
+    <span>PENGUMUMAN!</span>
 </div>
 
 <div class="welcome">SELAMAT DATANG</div>
