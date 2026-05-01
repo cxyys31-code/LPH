@@ -43,12 +43,11 @@ body{
 
 /* TEXT */
 .welcome{
-  margin-top:15px;
-  font-size:18px;
+  margin-top:20px;
+  font-size:22px; /* diperbesar */
   font-weight:bold;
 }
 
-/* PROFILE */
 .profile{
   width:110px;
   height:110px;
@@ -61,11 +60,10 @@ body{
   background-position:center;
 }
 
-/* NAME */
 .name{
-  font-size:16px;
+  font-size:14px; /* diperkecil */
   font-weight:bold;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
 
 /* GRID */
@@ -74,19 +72,18 @@ body{
   grid-template-columns:repeat(3,90px);
   gap:20px;
   justify-content:center;
+  margin-top:20px; /* ini bikin menu turun */
 }
 
-/* ITEM */
 .item{
   cursor:pointer;
 }
 
-/* CARD */
 .card{
   width:90px;
   height:70px;
-  background:transparent; /* hilangin background abu */
-  border:none; /* hilangin garis */
+  background:transparent;
+  border:none;
   border-radius:12px;
   overflow:hidden;
 
@@ -101,14 +98,12 @@ body{
   transform:scale(1.05);
 }
 
-/* IMAGE */
 .card img{
   width:100%;
   height:100%;
   object-fit:contain;
 }
 
-/* TEXT MENU */
 .label{
   margin-top:6px;
   font-size:13px;
@@ -174,7 +169,7 @@ body{
 
   <div class="item" onclick="go('ipk.html')">
     <div class="card"><img src="ipk.png"></div>
-    <div class="label">IP komulatif</div>
+    <div class="label">IP Komulatif</div>
   </div>
 
 </div>
